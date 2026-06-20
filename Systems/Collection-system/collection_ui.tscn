@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://b8hq76e1rbgdh"]
+
+[ext_resource type="Script" uid="uid://c63csq1dfjse6" path="res://Systems/Collection-system/scripts/collection_ui.gd" id="1_krsv6"]
+
+[node name="CollectionUI" type="Control" unique_id=955670684]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_krsv6")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=911859175]
+layout_mode = 0
+offset_right = 860.0
+offset_bottom = 470.0
+columns = 4
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1568653444]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 417.0
+offset_right = 630.0
+offset_bottom = 457.0
+
+[node name="Button" type="Button" parent="." unique_id=1654030486]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 209.0
+offset_right = 224.0
+offset_bottom = 259.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

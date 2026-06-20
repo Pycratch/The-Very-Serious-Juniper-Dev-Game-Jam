@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cark8jecq6hob"]
+
+[ext_resource type="Script" uid="uid://cxtftmjlnxif2" path="res://Systems/Collection-system/scripts/inventory.gd" id="1_bsb4b"]
+[ext_resource type="Script" uid="uid://sg7t00nf3ws6" path="res://Systems/Collection-system/item_script.gd" id="2_o7ns8"]
+[ext_resource type="Resource" uid="uid://rxx7gamgwgsi" path="res://Systems/Collection-system/tests/test1.tres" id="3_0h3vl"]
+
+[node name="Inventory" type="Node" unique_id=1645023232]
+script = ExtResource("1_bsb4b")
+Items = Array[ExtResource("2_o7ns8")]([ExtResource("3_0h3vl"), ExtResource("3_0h3vl"), ExtResource("3_0h3vl"), ExtResource("3_0h3vl"), ExtResource("3_0h3vl"), ExtResource("3_0h3vl")])

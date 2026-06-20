@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemPart" format=3 uid="uid://rxx7gamgwgsi"]
+
+[ext_resource type="Script" uid="uid://sg7t00nf3ws6" path="res://Systems/Collection-system/item_script.gd" id="1_odptt"]
+[ext_resource type="Texture2D" uid="uid://d1d0ja5eviqi5" path="res://Systems/Collection-system/tests/dirt_tile_platformer.png" id="1_tn4hk"]
+
+[resource]
+script = ExtResource("1_odptt")
+picture = ExtResource("1_tn4hk")
+metadata/_custom_type_script = "uid://sg7t00nf3ws6"

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://crqxbbtpnsvyf"]
+
+[ext_resource type="Script" uid="uid://brj0jo0dewwum" path="res://Systems/Collection-system/scripts/item_slot.gd" id="1_fb5ek"]
+
+[node name="ItemSlot" type="Panel" unique_id=1054243417]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+script = ExtResource("1_fb5ek")
+
+[node name="ItemDisplay" type="Sprite2D" parent="." unique_id=815839860]
+offset = Vector2(32, 32)
+
+[node name="PowerLabel" type="Label" parent="." unique_id=94313892]
+layout_mode = 0
+offset_right = 39.0
+offset_bottom = 23.0
