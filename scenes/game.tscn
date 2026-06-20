@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d3qudjq7csx16" path="res://assets/WheelspinFull.png" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://j7qe4pxmbqec" path="res://scripts/wheelspin.gd" id="2_iywne"]
 [ext_resource type="Texture2D" uid="uid://bxog1jit3v6og" path="res://icon.svg" id="2_lbhrr"]
+[ext_resource type="Script" uid="uid://btes2x6ydtnd5" path="res://scripts/wedgescript.gd" id="4_iywne"]
 
 [sub_resource type="GDScript" id="GDScript_lnu2h"]
 script/source = "extends Sprite2D
@@ -19,19 +20,18 @@ func _process(delta: float) -> void:
 	global_rotation = 0
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_spe2m"]
-size = Vector2(4, 54)
-
 [node name="game" type="Node2D" unique_id=121537232]
 script = ExtResource("1_lbhrr")
 
 [node name="Wheelspin" type="Sprite2D" parent="." unique_id=1243129848]
+position = Vector2(-2, -5)
 texture = ExtResource("1_lnu2h")
 script = ExtResource("2_iywne")
 
 [node name="1" type="Area2D" parent="Wheelspin" unique_id=786102552]
 position = Vector2(0, -49)
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.24999999, 0.24999999)
+script = ExtResource("4_iywne")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wheelspin/1" unique_id=896023653]
 polygon = PackedVector2Array(-100, -36, -76, 28, 76, 24, 100, -36, 0, -60)
@@ -42,106 +42,113 @@ scale = Vector2(0.625, 0.625)
 texture = ExtResource("2_lbhrr")
 script = SubResource("GDScript_lnu2h")
 
-[node name="2" type="Area2D" parent="Wheelspin" unique_id=554680853]
-position = Vector2(-34, -32)
-scale = Vector2(0.25, 0.25)
+[node name="2" type="Area2D" parent="Wheelspin" unique_id=1842723569]
+position = Vector2(-36, -34)
+scale = Vector2(0.24999999, 0.24999999)
+script = ExtResource("4_iywne")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wheelspin/2" unique_id=1137436483]
-polygon = PackedVector2Array(-96, 28, -40, 52, 60, -40, 36, -104, -40, -56)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wheelspin/2" unique_id=1040121020]
+scale = Vector2(0.99999994, 0.99999994)
+polygon = PackedVector2Array(-88.000015, 36, -24, 60.000008, 68.00001, -32, 44, -96.000015, -36, -44)
 
 [node name="Tires" type="Sprite2D" parent="Wheelspin/2" unique_id=1165236860]
 modulate = Color(0.22745098, 0, 1, 1)
-scale = Vector2(0.625, 0.625)
+scale = Vector2(0.62499994, 0.62499994)
 texture = ExtResource("2_lbhrr")
 script = SubResource("GDScript_lnu2h")
 
-[node name="3" type="Area2D" parent="Wheelspin" unique_id=1451454471]
-position = Vector2(-48, 0)
-scale = Vector2(0.25, 0.25)
+[node name="3" type="Area2D" parent="Wheelspin" unique_id=1791385889]
+position = Vector2(-50, 5.9604645e-08)
+scale = Vector2(0.24999999, 0.24999999)
+script = ExtResource("4_iywne")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wheelspin/3" unique_id=254050988]
-polygon = PackedVector2Array(-40, 100, 28, 68, 16, -76, -40, -100, -64, 0)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wheelspin/3" unique_id=1142216417]
+polygon = PackedVector2Array(-36, 104, 28, 76, 32, -76, -32, -100, -56, -2.3841858e-07)
 
 [node name="Exhaust" type="Sprite2D" parent="Wheelspin/3" unique_id=35436924]
 modulate = Color(0.22745098, 0, 1, 1)
+position = Vector2(9.536743e-07, -2.3841858e-07)
 scale = Vector2(0.625, 0.625)
 texture = ExtResource("2_lbhrr")
 script = SubResource("GDScript_lnu2h")
 
-[node name="4" type="Area2D" parent="Wheelspin" unique_id=744391276]
-position = Vector2(-34, 35)
-scale = Vector2(0.25, 0.25)
+[node name="4" type="Area2D" parent="Wheelspin" unique_id=440513882]
+position = Vector2(-35, 33)
+scale = Vector2(0.24999999, 0.24999999)
+script = ExtResource("4_iywne")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wheelspin/4" unique_id=45086515]
-polygon = PackedVector2Array(36, 96, 64, 24, -28, -72, -96, -40, -48, 40)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wheelspin/4" unique_id=1270365666]
+polygon = PackedVector2Array(-96, -28, -40, 48, 40, 104, 72, 24, -32, -56)
 
 [node name="Aerodynamics" type="Sprite2D" parent="Wheelspin/4" unique_id=1568115254]
 modulate = Color(0.22745098, 0, 1, 1)
+position = Vector2(4.76839e-07, 0)
 scale = Vector2(0.625, 0.625)
 texture = ExtResource("2_lbhrr")
 script = SubResource("GDScript_lnu2h")
 
-[node name="5" type="Area2D" parent="Wheelspin" unique_id=1261516716]
-position = Vector2(0, 50)
-scale = Vector2(0.25, 0.25)
+[node name="5" type="Area2D" parent="Wheelspin" unique_id=1613544246]
+position = Vector2(-0.99999994, 48.999992)
+scale = Vector2(0.24999999, 0.24999999)
+script = ExtResource("4_iywne")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wheelspin/5" unique_id=442833833]
-polygon = PackedVector2Array(96, 36, 72, -36, -72, -36, -100, 36, 0, 56)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wheelspin/5" unique_id=1642995228]
+polygon = PackedVector2Array(-96, 40.00003, 4, 60.00003, 104, 40.00003, 72, -39.99997, -64, -39.99997)
 
 [node name="Brakes" type="Sprite2D" parent="Wheelspin/5" unique_id=186183083]
 modulate = Color(0.22745098, 0, 1, 1)
-scale = Vector2(0.625, 0.625)
+position = Vector2(0, -3.0517578e-05)
+scale = Vector2(0.62499994, 0.62499994)
 texture = ExtResource("2_lbhrr")
 script = SubResource("GDScript_lnu2h")
 
-[node name="6" type="Area2D" parent="Wheelspin" unique_id=1370852745]
-position = Vector2(35, 34)
-scale = Vector2(0.25, 0.25)
+[node name="6" type="Area2D" parent="Wheelspin" unique_id=1670374246]
+position = Vector2(32, 33)
+scale = Vector2(0.24999999, 0.24999999)
+script = ExtResource("4_iywne")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wheelspin/6" unique_id=1854454015]
-polygon = PackedVector2Array(92, -36, 32, -60, -68, 28, -44, 100, 44, 44)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wheelspin/6" unique_id=1395823192]
+polygon = PackedVector2Array(-28, 104, 60, 44, 104, -28, 40, -56, -60, 24)
 
 [node name="Supercharger" type="Sprite2D" parent="Wheelspin/6" unique_id=5714275]
 modulate = Color(0.22745098, 0, 1, 1)
+position = Vector2(1.5258789e-05, 0)
 scale = Vector2(0.625, 0.625)
 texture = ExtResource("2_lbhrr")
 script = SubResource("GDScript_lnu2h")
 
-[node name="7" type="Area2D" parent="Wheelspin" unique_id=1804568670]
-position = Vector2(50, 1)
-scale = Vector2(0.25, 0.25)
+[node name="7" type="Area2D" parent="Wheelspin" unique_id=1840207046]
+position = Vector2(48, 4.7683716e-07)
+scale = Vector2(0.24999999, 0.24999999)
+script = ExtResource("4_iywne")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wheelspin/7" unique_id=410771294]
-polygon = PackedVector2Array(36, -104, -24, -80, -28, 72, 32, 96, 56, -4)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wheelspin/7" unique_id=247669588]
+polygon = PackedVector2Array(-24, -72, -24, 76, 40, 104, 64, -1.9073486e-06, 40, -100)
 
 [node name="Transmission" type="Sprite2D" parent="Wheelspin/7" unique_id=620401137]
 modulate = Color(0.22745098, 0, 1, 1)
-scale = Vector2(0.625, 0.625)
+scale = Vector2(0.62499994, 0.62499994)
 texture = ExtResource("2_lbhrr")
 script = SubResource("GDScript_lnu2h")
 
-[node name="8" type="Area2D" parent="Wheelspin" unique_id=1483953444]
-position = Vector2(34, -34)
-scale = Vector2(0.25, 0.25)
+[node name="8" type="Area2D" parent="Wheelspin" unique_id=1771136415]
+position = Vector2(35.999996, -34)
+scale = Vector2(0.24999999, 0.24999999)
+script = ExtResource("4_iywne")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wheelspin/8" unique_id=1434196838]
-polygon = PackedVector2Array(-36, -96, -60, -36, 40, 60, 100, 36, 48, -44)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wheelspin/8" unique_id=1324725390]
+polygon = PackedVector2Array(-43.999985, -96, -67.999985, -36, 24.000015, 64, 88.000015, 36, 40.000015, -40)
 
 [node name="Suspension" type="Sprite2D" parent="Wheelspin/8" unique_id=1205868276]
 modulate = Color(0.22745098, 0, 1, 1)
+position = Vector2(1.5258789e-05, -7.6293945e-06)
 scale = Vector2(0.625, 0.625)
 texture = ExtResource("2_lbhrr")
 script = SubResource("GDScript_lnu2h")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1855814309]
+zoom = Vector2(2, 2)
 
-[node name="Pointer" type="Area2D" parent="." unique_id=24472481]
-position = Vector2(0, -74)
-rotation = 3.1415927
-scale = Vector2(0.046, -0.46)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pointer" unique_id=1384835798]
-shape = SubResource("RectangleShape2D_spe2m")
-
-[node name="PointerSprite" type="Sprite2D" parent="Pointer" unique_id=1584350589]
-texture = ExtResource("2_lbhrr")
+[node name="Pointer" type="RayCast2D" parent="." unique_id=1182352889]
+position = Vector2(0, -107)
+collide_with_areas = true

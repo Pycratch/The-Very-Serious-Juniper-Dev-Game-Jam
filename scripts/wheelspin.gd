@@ -170,39 +170,46 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var easeOutQuadtween = create_tween()
-	easeOutQuadtween.set_trans(Tween.TRANS_CIRC)
-	easeOutQuadtween.set_ease(Tween.EASE_OUT)
 	if Input.is_action_just_pressed("spin"):
+		var easeOutQuadtween = create_tween()
+		easeOutQuadtween.set_trans(Tween.TRANS_CIRC)
+		easeOutQuadtween.set_ease(Tween.EASE_OUT)
+	
+		for child in get_children():
+			child.roll_rarity()
 		var spin_timer = randf_range(min_spin_timer, max_spin_timer)
 		easeOutQuadtween.tween_property(self, "global_rotation", randi() % 70 + 40, spin_timer)
 		await get_tree().create_timer(spin_timer).timeout
-		for body in Pointer.get_overlapping_areas():
-			var prize = body.get_child(1).name
-			if prize not in prizes:
-				return
-			roll_prize(prize)
+		var body = Pointer.get_collider()
+		if not body:
+			return
+		var prize = body.get_child(1).name
+		var rarity = body.rolled_rarity
+		roll_prize(prize, rarity)
 			
 
-func roll_prize(prize):
-	print(prize)
+func roll_prize(prize, rarity):
 	var prize_list = prizes.get(prize)
 	if prize_list:
 		final_prize = prize_list.pick_random()
-		give_rarity(final_prize)
+		give_rarity(final_prize, rarity)
 		
 		
-func give_rarity(prize):
-	var rolled_rarity : int
+func give_rarity(prize, manualrarity):
+	if manualrarity != "":
+		print(manualrarity + " " + prize)
+		return manualrarity
+	
+	var first_rolled_rarity : float
 	var total_weight : int = 0
 	for rarity in rarities:
 		total_weight += rarity["weight"]
 		
 	var roll = randf_range(0, total_weight)
 	for rarity in rarities:
-		rolled_rarity += rarity["weight"]
-		if roll < rolled_rarity:
-			print(rarity["name"]+ " " + prize)
+		first_rolled_rarity += rarity["weight"]
+		if roll < first_rolled_rarity:
+			#print(rarity["name"] + " " + prize)
 			return rarity["name"]
 			
 	print("fallback")
