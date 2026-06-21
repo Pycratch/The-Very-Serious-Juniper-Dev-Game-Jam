@@ -2,9 +2,25 @@ extends Sprite2D
 
 @onready var Pointer = get_parent().get_node("Pointer")
 
+@export var engine_icon : Texture2D
+@export var tires_icon : Texture2D
+@export var exhaust_icon : Texture2D
+@export var aerodynamics_icon : Texture2D
+@export var brakes_icon : Texture2D
+@export var supercharger_icon : Texture2D
+@export var turbocharger_icon : Texture2D
+@export var transmission_icon : Texture2D
+@export var suspension_icon : Texture2D
+@export var cooling_system_icon : Texture2D
+@export var drivetrain_icon : Texture2D
+@export var fuel_system_icon : Texture2D
+@export var weight_reduction_icon : Texture2D
+@export var differential_icon : Texture2D
+
 var min_spin_timer : float = 1.8
 var max_spin_timer : float = 3.0
 var final_prize : String
+
 var rarities = [
 	{"name": "Common", "weight": 50},
 	{"name": "Rare", "weight": 25},
@@ -21,29 +37,38 @@ var rarities = [
 	"Brakes": brakes,
 	"Transmission": transmission,
 	"Suspension": suspension,
+	"Turbocharger": turbocharger,
 	"Supercharger": supercharger,
 	"Cooling System": cooling_system,
 	"Drivetrain": drivetrain,
 	"Differential": differential,
 	"Fuel System": fuel_system,
 	"Weight Reduction": weight_reduction
-	#"Interior": interior, #Cosmetic
-	#"Bumper": bumper,
-	#"Bonnet": bonnet,
-	#"Seats": seats
+}
+
+@onready var prizes_icons : Dictionary = {
+	"Engine": engine_icon,
+	"Tires": tires_icon,
+	"Exhaust": exhaust_icon,
+	"Aerodynamics": aerodynamics_icon,
+	"Brakes": brakes_icon,
+	"Transmission": transmission_icon,
+	"Suspension": suspension_icon,
+	"Turbocharger": turbocharger_icon,
+	"Supercharger": supercharger_icon,
+	"Cooling System": cooling_system_icon,
+	"Drivetrain": drivetrain_icon,
+	"Differential": differential_icon,
+	"Fuel System": fuel_system_icon,
+	"Weight Reduction": weight_reduction_icon
 }
 
 var engine : Array = [
 	"Inline-4",
-	"Inline-5",
 	"V6",
-	"Flat-6",
 	"V8",
 	"V10",
 	"V12",
-	"Twin-Turbo V8",
-	"Twin-Turbo V12",
-    "Hybrid Hypercar Powertrain"
 ]
 
 var exhaust : Array = [
@@ -58,6 +83,7 @@ var transmission : Array = [
 	"Multi Clutch Transmission",
 	
 ]
+
 var turbocharger : Array = [
 	"Stock Turbo",
 	"Sport Turbo",
@@ -176,16 +202,18 @@ func _process(delta: float) -> void:
 		easeOutQuadtween.set_ease(Tween.EASE_OUT)
 	
 		for child in get_children():
+			setup_prizes(child)
 			child.roll_rarity()
-		var spin_timer = randf_range(min_spin_timer, max_spin_timer)
+		
+		var spin_timer = randf_range(min_spin_timer, max_spin_timer) #CAN BE REMOVED WHEN THERE IS RANDOM PRIZES
 		easeOutQuadtween.tween_property(self, "global_rotation", randi() % 70 + 40, spin_timer)
 		await get_tree().create_timer(spin_timer).timeout
+		
 		var body = Pointer.get_collider()
-		if not body:
-			return
-		var prize = body.get_child(1).name
-		var rarity = body.rolled_rarity
-		roll_prize(prize, rarity)
+		if body:
+			var prize = body.get_child(1).name
+			var rarity = body.rolled_rarity
+			roll_prize(prize, rarity)
 			
 
 func roll_prize(prize, rarity):
@@ -214,5 +242,5 @@ func give_rarity(prize, manualrarity):
 			
 	print("fallback")
 	
-	
-	
+func setup_prizes(child):
+	child.prize_type = prizes.keys().pick_random()

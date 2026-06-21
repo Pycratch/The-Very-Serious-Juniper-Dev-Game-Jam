@@ -5,6 +5,21 @@
 [ext_resource type="Script" uid="uid://j7qe4pxmbqec" path="res://scripts/wheelspin.gd" id="2_iywne"]
 [ext_resource type="Texture2D" uid="uid://bxog1jit3v6og" path="res://icon.svg" id="2_lbhrr"]
 [ext_resource type="Script" uid="uid://btes2x6ydtnd5" path="res://scripts/wedgescript.gd" id="4_iywne"]
+[ext_resource type="Texture2D" uid="uid://bf4qtnq84a15k" path="res://assets/Prizes/Engines/InlineV4.png" id="5_p57ef"]
+[ext_resource type="Texture2D" uid="uid://bisevca83c5gk" path="res://assets/Prizes/Icons/EngineIcon.png" id="5_rysoc"]
+[ext_resource type="Texture2D" uid="uid://bx6b8r0y8l0i6" path="res://assets/Prizes/Icons/TiresIcon.png" id="6_ssvqc"]
+[ext_resource type="Texture2D" uid="uid://1p1l7323qicd" path="res://assets/Prizes/Icons/ExhaustIcon.png" id="7_264po"]
+[ext_resource type="Texture2D" uid="uid://c2nf343rkax5i" path="res://assets/Prizes/Icons/AerodynamicsIcon.png" id="8_1kice"]
+[ext_resource type="Texture2D" uid="uid://7dib23prihwh" path="res://assets/Prizes/Icons/BrakesIcon.png" id="9_5newe"]
+[ext_resource type="Texture2D" uid="uid://ckuojyrxwxxij" path="res://assets/Prizes/Icons/TurbochargerIcon.png" id="10_1kice"]
+[ext_resource type="Texture2D" uid="uid://wh62sp8j021h" path="res://assets/Prizes/Icons/SuperchargerIcon.png" id="10_37s47"]
+[ext_resource type="Texture2D" uid="uid://c67x6vhshyhx3" path="res://assets/Prizes/Icons/TransmissionIcon.png" id="11_bt5mj"]
+[ext_resource type="Texture2D" uid="uid://fy0st1ec4ys2" path="res://assets/Prizes/Icons/SuspensionIcon.png" id="12_e1j6l"]
+[ext_resource type="Texture2D" uid="uid://b5rnlvvln1ema" path="res://assets/Prizes/Icons/CoolingSystemIcon.png" id="13_pl11u"]
+[ext_resource type="Texture2D" uid="uid://biwsi14ifb6wf" path="res://assets/Prizes/Icons/DrivetrainIcon.png" id="14_bhx41"]
+[ext_resource type="Texture2D" uid="uid://m0wr5v8f6ti8" path="res://assets/Prizes/Icons/FuelSystemIcon.png" id="15_qnb83"]
+[ext_resource type="Texture2D" uid="uid://bk2w4ydiga47n" path="res://assets/Prizes/Icons/WeightReductionIcon.png" id="16_sww3w"]
+[ext_resource type="Texture2D" uid="uid://bqhj4dbcqf4jv" path="res://assets/Prizes/Icons/DifferentialIcon.png" id="17_5newe"]
 
 [sub_resource type="GDScript" id="GDScript_lnu2h"]
 script/source = "extends Sprite2D
@@ -24,12 +39,25 @@ func _process(delta: float) -> void:
 script = ExtResource("1_lbhrr")
 
 [node name="Wheelspin" type="Sprite2D" parent="." unique_id=1243129848]
-position = Vector2(-2, -5)
 texture = ExtResource("1_lnu2h")
 script = ExtResource("2_iywne")
+engine_icon = ExtResource("5_rysoc")
+tires_icon = ExtResource("6_ssvqc")
+exhaust_icon = ExtResource("7_264po")
+aerodynamics_icon = ExtResource("8_1kice")
+brakes_icon = ExtResource("9_5newe")
+supercharger_icon = ExtResource("10_37s47")
+turbocharger_icon = ExtResource("10_1kice")
+transmission_icon = ExtResource("11_bt5mj")
+suspension_icon = ExtResource("12_e1j6l")
+cooling_system_icon = ExtResource("13_pl11u")
+drivetrain_icon = ExtResource("14_bhx41")
+fuel_system_icon = ExtResource("15_qnb83")
+weight_reduction_icon = ExtResource("16_sww3w")
+differential_icon = ExtResource("17_5newe")
 
 [node name="1" type="Area2D" parent="Wheelspin" unique_id=786102552]
-position = Vector2(0, -49)
+position = Vector2(1.9999999, -49)
 scale = Vector2(0.24999999, 0.24999999)
 script = ExtResource("4_iywne")
 
@@ -37,9 +65,9 @@ script = ExtResource("4_iywne")
 polygon = PackedVector2Array(-100, -36, -76, 28, 76, 24, 100, -36, 0, -60)
 
 [node name="Engine" type="Sprite2D" parent="Wheelspin/1" unique_id=54243855]
-modulate = Color(0.22745098, 0, 1, 1)
-scale = Vector2(0.625, 0.625)
-texture = ExtResource("2_lbhrr")
+position = Vector2(-9.536743e-07, 0)
+scale = Vector2(3, 3)
+texture = ExtResource("5_p57ef")
 script = SubResource("GDScript_lnu2h")
 
 [node name="2" type="Area2D" parent="Wheelspin" unique_id=1842723569]
