@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c42f5det7p1q0"
-path="res://.godot/imported/V6.png-b1ff6fca3f39bdbe1638133a535dd896.ctex"
+uid="uid://cqpi2buc5dxnb"
+path="res://.godot/imported/ArrowIcon.png-bb071c5ff1d93d4390c41b4af17dcbf0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Prizes/Engines/V6.png"
-dest_files=["res://.godot/imported/V6.png-b1ff6fca3f39bdbe1638133a535dd896.ctex"]
+source_file="res://assets/ArrowIcon.png"
+dest_files=["res://.godot/imported/ArrowIcon.png-bb071c5ff1d93d4390c41b4af17dcbf0.ctex"]
 
 [params]
 

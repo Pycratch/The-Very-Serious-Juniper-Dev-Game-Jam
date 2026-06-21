@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do4w0n12vmh7j"
-path="res://.godot/imported/V8.png-d22dc418d8172ac15c2083492fd00abd.ctex"
+uid="uid://bf4qtnq84a15k"
+path="res://.godot/imported/InlineV4.png-37f04722764a84bc6e3633453934b5ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Prizes/Engines/V8.png"
-dest_files=["res://.godot/imported/V8.png-d22dc418d8172ac15c2083492fd00abd.ctex"]
+source_file="res://assets/Prizes/OtherParts/InlineV4.png"
+dest_files=["res://.godot/imported/InlineV4.png-37f04722764a84bc6e3633453934b5ed.ctex"]
 
 [params]
 

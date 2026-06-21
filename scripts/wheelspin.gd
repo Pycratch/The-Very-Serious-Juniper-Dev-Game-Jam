@@ -1,6 +1,8 @@
 extends Sprite2D
 
 @onready var Pointer = get_parent().get_node("Pointer")
+@onready var WinSound = get_parent().get_node("WinSound")
+@onready var SpinSound = get_parent().get_node("SpinSound")
 
 @export var engine_icon : Texture2D
 @export var tires_icon : Texture2D
@@ -17,10 +19,8 @@ extends Sprite2D
 @export var weight_reduction_icon : Texture2D
 @export var differential_icon : Texture2D
 
-var min_spin_timer : float = 1.8
-var max_spin_timer : float = 3.0
 var final_prize : String
-
+var spin_timer : float = 2.5
 var rarities = [
 	{"name": "Common", "weight": 50},
 	{"name": "Rare", "weight": 25},
@@ -205,8 +205,8 @@ func _process(delta: float) -> void:
 			setup_prizes(child)
 			child.roll_rarity()
 		
-		var spin_timer = randf_range(min_spin_timer, max_spin_timer) #CAN BE REMOVED WHEN THERE IS RANDOM PRIZES
 		easeOutQuadtween.tween_property(self, "global_rotation", randi() % 70 + 40, spin_timer)
+		SpinSound.play()
 		await get_tree().create_timer(spin_timer).timeout
 		
 		var body = Pointer.get_collider()
@@ -217,6 +217,7 @@ func _process(delta: float) -> void:
 			
 
 func roll_prize(prize, rarity):
+	WinSound.play()
 	var prize_list = prizes.get(prize)
 	if prize_list:
 		final_prize = prize_list.pick_random()
