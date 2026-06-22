@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dm5d0eopk5mq7"]
+
+[ext_resource type="Script" uid="uid://qdskfy51o1eh" path="res://scripts/main_menu.gd" id="1_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://cfqi2xgg451pc" path="res://assets/PixelArtPhoto/NissanSkyline.png" id="1_l6cm7"]
+
+[node name="MainMenuUI" type="Control" unique_id=69001883]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ekxnf")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1218901487]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer" unique_id=1514796519]
+position = Vector2(569, 313)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_l6cm7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=501935048]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="PLAY" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1726502722]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 2
+size_flags_vertical = 4
+text = "Play"
+
+[node name="LEAVE" type="Button" parent="MarginContainer/VBoxContainer" unique_id=475093938]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 2
+size_flags_vertical = 4
+text = "Leave"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PLAY" to="." method="_on_play_pressed"]

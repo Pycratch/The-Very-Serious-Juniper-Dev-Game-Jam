@@ -3,6 +3,7 @@ extends Sprite2D
 @onready var Pointer = get_parent().get_node("Pointer")
 @onready var WinSound = get_parent().get_node("WinSound")
 @onready var SpinSound = get_parent().get_node("SpinSound")
+@onready var parent = get_parent()
 
 @export var engine_icon : Texture2D
 @export var tires_icon : Texture2D
@@ -77,13 +78,6 @@ var exhaust : Array = [
 	"Turbo-Back"
 ]
 
-var transmission : Array = [
-	"Direct-Shift Gearbox",
-	"Dual-Clutch Transmission",
-	"Multi Clutch Transmission",
-	
-]
-
 var turbocharger : Array = [
 	"Stock Turbo",
 	"Sport Turbo",
@@ -121,7 +115,7 @@ var tires : Array = [
     "Slick Racing Tires"
 ]
 
-var transimission : Array = [
+var transmission : Array = [
 	"5-Speed Manual",
 	"6-Speed Manual",
 	"7-Speed DCT",
@@ -196,6 +190,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if parent.visible == false:
+		return
+	
 	if Input.is_action_just_pressed("spin"):
 		var easeOutQuadtween = create_tween()
 		easeOutQuadtween.set_trans(Tween.TRANS_CIRC)
@@ -235,10 +232,9 @@ func give_rarity(prize, manualrarity):
 		total_weight += rarity["weight"]
 		
 	var roll = randf_range(0, total_weight)
-	for rarity in rarities:
+	for rarity in rarities: #Hier wird die Rarity gerollt
 		first_rolled_rarity += rarity["weight"]
 		if roll < first_rolled_rarity:
-			#print(rarity["name"] + " " + prize)
 			return rarity["name"]
 			
 	print("fallback")

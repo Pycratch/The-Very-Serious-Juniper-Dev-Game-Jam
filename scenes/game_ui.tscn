@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://wsowlu8jy8dx"]
+
+[ext_resource type="Script" uid="uid://cs60r1b78hwvr" path="res://scripts/game_ui.gd" id="1_yubou"]
+[ext_resource type="Texture2D" uid="uid://bw63sj140g8h3" path="res://assets/PixelArtPhoto/Jesko.png" id="2_u001w"]
+[ext_resource type="Texture2D" uid="uid://8kql4sqe0g28" path="res://assets/PixelArtPhoto/Ferrari.png" id="3_u2dgd"]
+[ext_resource type="Texture2D" uid="uid://b6qx6mu1ljmtu" path="res://assets/PixelArtPhoto/Lamborghini.png" id="4_bt76a"]
+
+[node name="GameUI" type="Control" unique_id=1611855527]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yubou")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=431545220]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2022780840]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="WHEELSPIN" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1426549872]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+text = "WHEELSPIN"
+
+[node name="RACE" type="Button" parent="MarginContainer/VBoxContainer" unique_id=915199853]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+text = "RACE"
+
+[node name="BUY" type="Button" parent="MarginContainer/VBoxContainer" unique_id=914605435]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+text = "BUY"
+
+[node name="SELL" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1556990983]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+text = "SELL"
+
+[node name="INVENTORY" type="Button" parent="MarginContainer/VBoxContainer" unique_id=131373767]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+text = "INVENTORY"
+
+[node name="UnsplashJesko" type="Sprite2D" parent="MarginContainer" unique_id=1006249621]
+position = Vector2(838, 100)
+texture = ExtResource("2_u001w")
+
+[node name="UnsplashFerrari" type="Sprite2D" parent="MarginContainer" unique_id=847198158]
+position = Vector2(879, 494)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_u2dgd")
+
+[node name="UnsplashLamborghini" type="Sprite2D" parent="MarginContainer" unique_id=1255642275]
+position = Vector2(786, 298)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_bt76a")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/WHEELSPIN" to="." method="_on_wheelspin_pressed"]
