@@ -15,6 +15,10 @@ func _process(delta: float) -> void:
 func _on_play_pressed() -> void:
 	toggle_visibility(GameUI)
 
+func _on_leave_pressed() -> void:
+	get_tree().quit()
+
+
 func toggle_visibility(ui):
 	ui.visible = !ui.visible
 	self.visible = !self.visible

@@ -22,6 +22,7 @@ extends Sprite2D
 
 var final_prize : String
 var spin_timer : float = 2.5
+
 var rarities = [
 	{"name": "Common", "weight": 50},
 	{"name": "Rare", "weight": 25},
@@ -221,10 +222,10 @@ func roll_prize(prize, rarity):
 		give_rarity(final_prize, rarity)
 		
 		
-func give_rarity(prize, manualrarity):
-	if manualrarity != "":
-		print(manualrarity + " " + prize)
-		return manualrarity
+func give_rarity(prize, finalrarity):
+	if finalrarity != "":
+		print(finalrarity + " " + prize)
+		return finalrarity
 	
 	var first_rolled_rarity : float
 	var total_weight : int = 0

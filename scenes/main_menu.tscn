@@ -36,7 +36,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer" unique_id=1514796519]
+[node name="Background" type="Sprite2D" parent="MarginContainer" unique_id=1514796519]
 position = Vector2(569, 313)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_l6cm7")
@@ -60,3 +60,4 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_s2npe")
 theme_override_styles/hover = SubResource("StyleBoxTexture_0tnpc")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/PLAY" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/LEAVE" to="." method="_on_leave_pressed"]
