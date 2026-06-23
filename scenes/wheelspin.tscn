@@ -1,0 +1,170 @@
+[gd_scene format=3 uid="uid://dokoweoac2i78"]
+
+[ext_resource type="Texture2D" uid="uid://d3qudjq7csx16" path="res://assets/WheelspinFull.png" id="1_7u241"]
+[ext_resource type="Script" uid="uid://j7qe4pxmbqec" path="res://scripts/wheelspin.gd" id="2_4dgiq"]
+[ext_resource type="Texture2D" uid="uid://dvb6m4qtlnoux" path="res://assets/Prizes/Icons/EngineIcon.png" id="3_q30pc"]
+[ext_resource type="Texture2D" uid="uid://bx6b8r0y8l0i6" path="res://assets/Prizes/Icons/TiresIcon.png" id="4_tn55i"]
+[ext_resource type="Texture2D" uid="uid://1p1l7323qicd" path="res://assets/Prizes/Icons/ExhaustIcon.png" id="5_5d3bm"]
+[ext_resource type="Texture2D" uid="uid://c2nf343rkax5i" path="res://assets/Prizes/Icons/AerodynamicsIcon.png" id="6_tk1fs"]
+[ext_resource type="Texture2D" uid="uid://7dib23prihwh" path="res://assets/Prizes/Icons/BrakesIcon.png" id="7_b2ptb"]
+[ext_resource type="Texture2D" uid="uid://wh62sp8j021h" path="res://assets/Prizes/Icons/SuperchargerIcon.png" id="8_5v56i"]
+[ext_resource type="Texture2D" uid="uid://ckuojyrxwxxij" path="res://assets/Prizes/Icons/TurbochargerIcon.png" id="9_og5o3"]
+[ext_resource type="Texture2D" uid="uid://c67x6vhshyhx3" path="res://assets/Prizes/Icons/TransmissionIcon.png" id="10_kakah"]
+[ext_resource type="Texture2D" uid="uid://fy0st1ec4ys2" path="res://assets/Prizes/Icons/SuspensionIcon.png" id="11_n4d0f"]
+[ext_resource type="Texture2D" uid="uid://b5rnlvvln1ema" path="res://assets/Prizes/Icons/CoolingSystemIcon.png" id="12_5kmim"]
+[ext_resource type="Texture2D" uid="uid://biwsi14ifb6wf" path="res://assets/Prizes/Icons/DrivetrainIcon.png" id="13_jmtrd"]
+[ext_resource type="Texture2D" uid="uid://m0wr5v8f6ti8" path="res://assets/Prizes/Icons/FuelSystemIcon.png" id="14_1h1ol"]
+[ext_resource type="Texture2D" uid="uid://bk2w4ydiga47n" path="res://assets/Prizes/Icons/WeightReductionIcon.png" id="15_jcij7"]
+[ext_resource type="Texture2D" uid="uid://bqhj4dbcqf4jv" path="res://assets/Prizes/Icons/DifferentialIcon.png" id="16_81rdc"]
+[ext_resource type="Script" uid="uid://btes2x6ydtnd5" path="res://scripts/wedgescript.gd" id="17_0mmfj"]
+[ext_resource type="Texture2D" uid="uid://bxog1jit3v6og" path="res://icon.svg" id="18_nv0ag"]
+
+[sub_resource type="GDScript" id="GDScript_lnu2h"]
+script/source = "extends Sprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	global_rotation = 0
+"
+
+[node name="Wheelspin" type="Sprite2D" unique_id=1013339227]
+scale = Vector2(5, 5)
+texture = ExtResource("1_7u241")
+script = ExtResource("2_4dgiq")
+engine_icon = ExtResource("3_q30pc")
+tires_icon = ExtResource("4_tn55i")
+exhaust_icon = ExtResource("5_5d3bm")
+aerodynamics_icon = ExtResource("6_tk1fs")
+brakes_icon = ExtResource("7_b2ptb")
+supercharger_icon = ExtResource("8_5v56i")
+turbocharger_icon = ExtResource("9_og5o3")
+transmission_icon = ExtResource("10_kakah")
+suspension_icon = ExtResource("11_n4d0f")
+cooling_system_icon = ExtResource("12_5kmim")
+drivetrain_icon = ExtResource("13_jmtrd")
+fuel_system_icon = ExtResource("14_1h1ol")
+weight_reduction_icon = ExtResource("15_jcij7")
+differential_icon = ExtResource("16_81rdc")
+
+[node name="1" type="Area2D" parent="." unique_id=1814773883]
+position = Vector2(1.1920929e-07, -49)
+scale = Vector2(0.24999999, 0.24999999)
+script = ExtResource("17_0mmfj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="1" unique_id=1407225639]
+polygon = PackedVector2Array(-100, -36, -76, 28, 76, 24, 100, -36, 0, -60)
+
+[node name="Engine" type="Sprite2D" parent="1" unique_id=1945225468]
+scale = Vector2(3, 3)
+texture = ExtResource("3_q30pc")
+script = SubResource("GDScript_lnu2h")
+
+[node name="2" type="Area2D" parent="." unique_id=1591635938]
+position = Vector2(-36, -34)
+scale = Vector2(0.24999999, 0.24999999)
+script = ExtResource("17_0mmfj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="2" unique_id=1657666922]
+scale = Vector2(0.99999994, 0.99999994)
+polygon = PackedVector2Array(-88.000015, 36, -24, 60.000008, 68.00001, -32, 44, -96.000015, -36, -44)
+
+[node name="Tires" type="Sprite2D" parent="2" unique_id=626874944]
+modulate = Color(0.22745098, 0, 1, 1)
+scale = Vector2(0.62499994, 0.62499994)
+texture = ExtResource("18_nv0ag")
+script = SubResource("GDScript_lnu2h")
+
+[node name="3" type="Area2D" parent="." unique_id=633625010]
+position = Vector2(-50, 5.9604645e-08)
+scale = Vector2(0.24999999, 0.24999999)
+script = ExtResource("17_0mmfj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="3" unique_id=1468069695]
+polygon = PackedVector2Array(-36, 104, 28, 76, 32, -76, -32, -100, -56, -2.3841858e-07)
+
+[node name="Exhaust" type="Sprite2D" parent="3" unique_id=1175762904]
+modulate = Color(0.22745098, 0, 1, 1)
+position = Vector2(9.536743e-07, -2.3841858e-07)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("18_nv0ag")
+script = SubResource("GDScript_lnu2h")
+
+[node name="4" type="Area2D" parent="." unique_id=1257558589]
+position = Vector2(-35, 33)
+scale = Vector2(0.24999999, 0.24999999)
+script = ExtResource("17_0mmfj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="4" unique_id=970404622]
+polygon = PackedVector2Array(-96, -28, -40, 48, 40, 104, 72, 24, -32, -56)
+
+[node name="Aerodynamics" type="Sprite2D" parent="4" unique_id=1975862579]
+modulate = Color(0.22745098, 0, 1, 1)
+position = Vector2(4.76839e-07, 0)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("18_nv0ag")
+script = SubResource("GDScript_lnu2h")
+
+[node name="5" type="Area2D" parent="." unique_id=727826733]
+position = Vector2(-0.99999994, 48.999992)
+scale = Vector2(0.24999999, 0.24999999)
+script = ExtResource("17_0mmfj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="5" unique_id=548309311]
+polygon = PackedVector2Array(-96, 40.00003, 4, 60.00003, 104, 40.00003, 72, -39.99997, -64, -39.99997)
+
+[node name="Brakes" type="Sprite2D" parent="5" unique_id=1767221097]
+modulate = Color(0.22745098, 0, 1, 1)
+position = Vector2(0, -3.0517578e-05)
+scale = Vector2(0.62499994, 0.62499994)
+texture = ExtResource("18_nv0ag")
+script = SubResource("GDScript_lnu2h")
+
+[node name="6" type="Area2D" parent="." unique_id=473785136]
+position = Vector2(32, 33)
+scale = Vector2(0.24999999, 0.24999999)
+script = ExtResource("17_0mmfj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="6" unique_id=1770442428]
+polygon = PackedVector2Array(-28, 104, 60, 44, 104, -28, 40, -56, -60, 24)
+
+[node name="Supercharger" type="Sprite2D" parent="6" unique_id=856792176]
+modulate = Color(0.22745098, 0, 1, 1)
+position = Vector2(1.5258789e-05, 0)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("18_nv0ag")
+script = SubResource("GDScript_lnu2h")
+
+[node name="7" type="Area2D" parent="." unique_id=1055963509]
+position = Vector2(48, 4.7683716e-07)
+scale = Vector2(0.24999999, 0.24999999)
+script = ExtResource("17_0mmfj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="7" unique_id=758066599]
+polygon = PackedVector2Array(-24, -72, -24, 76, 40, 104, 64, -1.9073486e-06, 40, -100)
+
+[node name="Transmission" type="Sprite2D" parent="7" unique_id=958674191]
+modulate = Color(0.22745098, 0, 1, 1)
+scale = Vector2(0.62499994, 0.62499994)
+texture = ExtResource("18_nv0ag")
+script = SubResource("GDScript_lnu2h")
+
+[node name="8" type="Area2D" parent="." unique_id=1889124718]
+position = Vector2(35.999996, -34)
+scale = Vector2(0.24999999, 0.24999999)
+script = ExtResource("17_0mmfj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="8" unique_id=1411458613]
+polygon = PackedVector2Array(-43.999985, -96, -67.999985, -36, 24.000015, 64, 88.000015, 36, 40.000015, -40)
+
+[node name="Suspension" type="Sprite2D" parent="8" unique_id=896916716]
+modulate = Color(0.22745098, 0, 1, 1)
+position = Vector2(1.5258789e-05, -7.6293945e-06)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("18_nv0ag")
+script = SubResource("GDScript_lnu2h")

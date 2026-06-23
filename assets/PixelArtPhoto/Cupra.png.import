@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://elr3l26aqlyf"
-path="res://.godot/imported/WheelspinPiece.png-fd955d44273b00aa57ca6897e56bfdfc.ctex"
+uid="uid://bv14wk3omojye"
+path="res://.godot/imported/Cupra.png-2cbf367cea842eb1d97147e945aca14f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/WheelspinPiece.png"
-dest_files=["res://.godot/imported/WheelspinPiece.png-fd955d44273b00aa57ca6897e56bfdfc.ctex"]
+source_file="res://assets/PixelArtPhoto/Cupra.png"
+dest_files=["res://.godot/imported/Cupra.png-2cbf367cea842eb1d97147e945aca14f.ctex"]
 
 [params]
 
