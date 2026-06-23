@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cjm4j04fxj37l" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://dokoweoac2i78" path="res://scenes/wheelspin.tscn" id="4_p57ef"]
 [ext_resource type="Script" uid="uid://du6331ec8jk8y" path="res://scripts/wheelspin_ui.gd" id="4_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://cmspign0mfgg2" path="res://scenes/sell_ui.tscn" id="8_gee14"]
 [ext_resource type="AudioStream" uid="uid://svny87lafhro" path="res://assets/sfx/master_of_dreams_8_bit_arcade_victory_2_014.mp3" id="21_5newe"]
 [ext_resource type="Texture2D" uid="uid://cqpi2buc5dxnb" path="res://assets/ArrowIcon.png" id="21_37s47"]
 [ext_resource type="PackedScene" uid="uid://wsowlu8jy8dx" path="res://scenes/game_ui.tscn" id="22_bt5mj"]
@@ -71,5 +72,8 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "LEAVE"
+
+[node name="SellUI" parent="CanvasLayer" unique_id=1955161592 instance=ExtResource("8_gee14")]
+visible = false
 
 [connection signal="pressed" from="CanvasLayer/WheelspinUI/MarginContainer/VBoxContainer/Button" to="CanvasLayer/WheelspinUI" method="_on_button_pressed"]

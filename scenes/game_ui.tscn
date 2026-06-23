@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://wsowlu8jy8dx"]
 
 [ext_resource type="Script" uid="uid://cs60r1b78hwvr" path="res://scripts/game_ui.gd" id="1_yubou"]
+[ext_resource type="Script" uid="uid://bfateeo0qr585" path="res://scripts/scroll_bar.gd" id="2_bt76a"]
 [ext_resource type="Texture2D" uid="uid://bw63sj140g8h3" path="res://assets/PixelArtPhoto/Jesko.png" id="2_u001w"]
-[ext_resource type="Texture2D" uid="uid://8kql4sqe0g28" path="res://assets/PixelArtPhoto/Ferrari.png" id="3_u2dgd"]
-[ext_resource type="Texture2D" uid="uid://b6qx6mu1ljmtu" path="res://assets/PixelArtPhoto/Lamborghini.png" id="4_bt76a"]
+[ext_resource type="Texture2D" uid="uid://nx0n8yu5x4ji" path="res://assets/PixelArtPhoto/PorscheCarrera.png" id="4_u2dgd"]
+[ext_resource type="Texture2D" uid="uid://b3gs4t8gjygql" path="res://assets/PixelArtPhoto/Lambo458.png" id="5_bt76a"]
+[ext_resource type="Texture2D" uid="uid://c1pew3gvcuorl" path="res://assets/PixelArtPhoto/LamboYellow.png" id="6_djwj0"]
+[ext_resource type="Texture2D" uid="uid://dmu7ualttwro0" path="res://assets/PixelArtPhoto/Lotus.png" id="7_e0pfi"]
+[ext_resource type="Texture2D" uid="uid://bv14wk3omojye" path="res://assets/PixelArtPhoto/Cupra.png" id="8_o3bws"]
+[ext_resource type="Texture2D" uid="uid://dgy6e4a8mpfnc" path="res://assets/PixelArtPhoto/AlfaRomeo.png" id="9_3huio"]
+[ext_resource type="Texture2D" uid="uid://3r7hgkhyqypf" path="res://assets/PixelArtPhoto/Jaguar.png" id="10_sjwyb"]
 
 [node name="GameUI" type="Control" unique_id=1611855527]
 layout_mode = 3
@@ -22,6 +28,79 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer" unique_id=968653749]
+custom_minimum_size = Vector2(600, 200)
+layout_mode = 2
+script = ExtResource("2_bt76a")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/ScrollContainer" unique_id=532172427]
+custom_minimum_size = Vector2(0, 1800)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="1" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer2" unique_id=2087813148]
+custom_minimum_size = Vector2(620, 200)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("2_u001w")
+
+[node name="2" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer2" unique_id=309239531]
+custom_minimum_size = Vector2(627, 200)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("4_u2dgd")
+
+[node name="3" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer2" unique_id=2083813031]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("5_bt76a")
+
+[node name="4" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer2" unique_id=784438244]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("6_djwj0")
+
+[node name="5" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer2" unique_id=214770672]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("7_e0pfi")
+
+[node name="6" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer2" unique_id=905694485]
+custom_maximum_size = Vector2(915, 225)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("8_o3bws")
+
+[node name="7" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer2" unique_id=7122372]
+custom_maximum_size = Vector2(915, 225)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("9_3huio")
+
+[node name="8" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer2" unique_id=318777808]
+custom_maximum_size = Vector2(915, 225)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("10_sjwyb")
+
+[node name="REPEAT1" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer2" unique_id=1969330980]
+custom_minimum_size = Vector2(620, 200)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("2_u001w")
+
+[node name="REPEAT2" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer2" unique_id=317826651]
+custom_minimum_size = Vector2(627, 200)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("4_u2dgd")
+
+[node name="REPEAT3" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer2" unique_id=2085163434]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("5_bt76a")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2022780840]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -36,11 +115,6 @@ custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 text = "RACE"
 
-[node name="BUY" type="Button" parent="MarginContainer/VBoxContainer" unique_id=914605435]
-custom_minimum_size = Vector2(200, 100)
-layout_mode = 2
-text = "BUY"
-
 [node name="SELL" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1556990983]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
@@ -51,18 +125,5 @@ custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 text = "INVENTORY"
 
-[node name="UnsplashJesko" type="Sprite2D" parent="MarginContainer" unique_id=1006249621]
-position = Vector2(838, 100)
-texture = ExtResource("2_u001w")
-
-[node name="UnsplashFerrari" type="Sprite2D" parent="MarginContainer" unique_id=847198158]
-position = Vector2(879, 494)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_u2dgd")
-
-[node name="UnsplashLamborghini" type="Sprite2D" parent="MarginContainer" unique_id=1255642275]
-position = Vector2(786, 298)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_bt76a")
-
 [connection signal="pressed" from="MarginContainer/VBoxContainer/WHEELSPIN" to="." method="_on_wheelspin_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SELL" to="." method="_on_sell_pressed"]

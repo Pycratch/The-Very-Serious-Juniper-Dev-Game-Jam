@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6qx6mu1ljmtu"
-path="res://.godot/imported/Lamborghini.png-1619bbd6390bf2459f19e6405c0e192f.ctex"
+uid="uid://bv14wk3omojye"
+path="res://.godot/imported/Cupra.png-2cbf367cea842eb1d97147e945aca14f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/PixelArtPhoto/Lamborghini.png"
-dest_files=["res://.godot/imported/Lamborghini.png-1619bbd6390bf2459f19e6405c0e192f.ctex"]
+source_file="res://assets/PixelArtPhoto/Cupra.png"
+dest_files=["res://.godot/imported/Cupra.png-2cbf367cea842eb1d97147e945aca14f.ctex"]
 
 [params]
 

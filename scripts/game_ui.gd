@@ -1,6 +1,7 @@
 extends Control
 
 @onready var WheelspinUI = get_parent().get_node("WheelspinUI")
+@onready var SellUI = get_parent().get_node("SellUI")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,6 +15,9 @@ func _process(delta: float) -> void:
 
 func _on_wheelspin_pressed() -> void:
 	toggle_visibility(WheelspinUI)
+
+func _on_sell_pressed() -> void:
+	toggle_visibility(SellUI)
 
 func toggle_visibility(ui):
 	ui.visible = !ui.visible
