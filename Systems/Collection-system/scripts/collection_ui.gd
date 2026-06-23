@@ -11,9 +11,7 @@ var deleted_slot #variable for deleting a slot
 func _ready():
 	#create_slots()
 	#set slots per item in inventory
-	for i in grid_container.get_child_count():
-		#print(i)
-		pass
+	ItemPart.Rarities.keys().pick_random()
 	
 
 

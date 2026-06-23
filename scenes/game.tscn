@@ -2,6 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://b8hq76e1rbgdh" path="res://Systems/Collection-system/collection_ui.tscn" id="1_uwrxv"]
 
-[node name="game" type="Node" unique_id=680162497]
+[node name="game" type="Node2D" unique_id=885714506]
 
 [node name="CollectionUI" parent="." unique_id=955670684 instance=ExtResource("1_uwrxv")]
