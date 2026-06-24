@@ -1,14 +1,15 @@
-[gd_scene format=3 uid="uid://chd20bl2lulwd"]
+[gd_scene format=4 uid="uid://chd20bl2lulwd"]
 
 [ext_resource type="Script" uid="uid://cjm4j04fxj37l" path="res://scripts/game.gd" id="1_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://bfuyj1dlgfli6" path="res://scenes/game_stats.tscn" id="2_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://dokoweoac2i78" path="res://scenes/wheelspin.tscn" id="4_p57ef"]
 [ext_resource type="Script" uid="uid://du6331ec8jk8y" path="res://scripts/wheelspin_ui.gd" id="4_u5sy4"]
-[ext_resource type="PackedScene" uid="uid://cmspign0mfgg2" path="res://scenes/sell_ui.tscn" id="8_gee14"]
+[ext_resource type="PackedScene" uid="uid://cmspign0mfgg2" path="res://ui/sell_ui.tscn" id="8_gee14"]
 [ext_resource type="Texture2D" uid="uid://d2xqfixleadm" path="res://assets/Buttons/LeaveButton.png" id="8_vtaks"]
 [ext_resource type="Texture2D" uid="uid://bbqkaypdueen2" path="res://assets/Buttons/LeaveButtonHovered.png" id="9_kvpfn"]
 [ext_resource type="AudioStream" uid="uid://svny87lafhro" path="res://assets/sfx/master_of_dreams_8_bit_arcade_victory_2_014.mp3" id="21_5newe"]
 [ext_resource type="Texture2D" uid="uid://cqpi2buc5dxnb" path="res://assets/ArrowIcon.png" id="21_37s47"]
-[ext_resource type="PackedScene" uid="uid://wsowlu8jy8dx" path="res://scenes/game_ui.tscn" id="22_bt5mj"]
+[ext_resource type="PackedScene" uid="uid://wsowlu8jy8dx" path="res://ui/game_ui.tscn" id="22_bt5mj"]
 [ext_resource type="PackedScene" uid="uid://dm5d0eopk5mq7" path="res://scenes/main_menu.tscn" id="23_e1j6l"]
 
 [sub_resource type="AudioStreamMP3" id="AudioStreamMP3_5newe"]
@@ -26,15 +27,17 @@ script = ExtResource("1_lbhrr")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1855814309]
 position = Vector2(576, 324)
 
+[node name="GameStats" parent="." unique_id=1251663651 instance=ExtResource("2_kvpfn")]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=332696621]
 
 [node name="GameUI" parent="CanvasLayer" unique_id=1611855527 instance=ExtResource("22_bt5mj")]
+visible = false
 
 [node name="MainMenuUI" parent="CanvasLayer" unique_id=69001883 instance=ExtResource("23_e1j6l")]
 visible = false
 
 [node name="WheelspinUI" type="Control" parent="CanvasLayer" unique_id=1289705449]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -70,11 +73,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/WheelspinUI/MarginContainer" unique_id=1375948315]
+[node name="Left" type="VBoxContainer" parent="CanvasLayer/WheelspinUI/MarginContainer" unique_id=1375948315]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="LEAVE" type="Button" parent="CanvasLayer/WheelspinUI/MarginContainer/VBoxContainer" unique_id=714870052]
+[node name="LEAVE" type="Button" parent="CanvasLayer/WheelspinUI/MarginContainer/Left" unique_id=714870052]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -82,7 +85,53 @@ size_flags_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxTexture_a0ljw")
 theme_override_styles/hover = SubResource("StyleBoxTexture_ysvq8")
 
+[node name="Margin" type="Control" parent="CanvasLayer/WheelspinUI/MarginContainer/Left" unique_id=313207496]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="COMMON" type="Button" parent="CanvasLayer/WheelspinUI/MarginContainer/Left" unique_id=1853229501]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "COMMON"
+
+[node name="RARE" type="Button" parent="CanvasLayer/WheelspinUI/MarginContainer/Left" unique_id=334216854]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "RARE"
+
+[node name="EPIC" type="Button" parent="CanvasLayer/WheelspinUI/MarginContainer/Left" unique_id=400179012]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "EPIC"
+
+[node name="MYTHIC" type="Button" parent="CanvasLayer/WheelspinUI/MarginContainer/Left" unique_id=1198416933]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "MYTHIC"
+
+[node name="LEGENDARY" type="Button" parent="CanvasLayer/WheelspinUI/MarginContainer/Left" unique_id=1592977120]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "LEGENDARY"
+
+[node name="Right" type="VBoxContainer" parent="CanvasLayer/WheelspinUI/MarginContainer" unique_id=293025709]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="MoneyLabel" type="Label" parent="CanvasLayer/WheelspinUI/MarginContainer/Right" unique_id=304026488]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Money :
+"
+
 [node name="SellUI" parent="CanvasLayer" unique_id=1955161592 instance=ExtResource("8_gee14")]
 visible = false
 
-[connection signal="pressed" from="CanvasLayer/WheelspinUI/MarginContainer/VBoxContainer/LEAVE" to="CanvasLayer/WheelspinUI" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/WheelspinUI/MarginContainer/Left/LEAVE" to="CanvasLayer/WheelspinUI" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/WheelspinUI/MarginContainer/Left/COMMON" to="CanvasLayer/WheelspinUI/Wheelspin" method="_on_common_pressed"]
+[connection signal="pressed" from="CanvasLayer/WheelspinUI/MarginContainer/Left/RARE" to="CanvasLayer/WheelspinUI/Wheelspin" method="_on_rare_pressed"]
+[connection signal="pressed" from="CanvasLayer/WheelspinUI/MarginContainer/Left/EPIC" to="CanvasLayer/WheelspinUI/Wheelspin" method="_on_epic_pressed"]
+[connection signal="pressed" from="CanvasLayer/WheelspinUI/MarginContainer/Left/MYTHIC" to="CanvasLayer/WheelspinUI/Wheelspin" method="_on_mythic_pressed"]
+[connection signal="pressed" from="CanvasLayer/WheelspinUI/MarginContainer/Left/LEGENDARY" to="CanvasLayer/WheelspinUI/Wheelspin" method="_on_legendary_pressed"]

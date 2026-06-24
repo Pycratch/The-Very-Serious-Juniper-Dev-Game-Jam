@@ -22,6 +22,8 @@ extends Sprite2D
 
 var final_prize : String
 var spin_timer : float = 2.5
+var price : float = 30.0
+var current_wheelspin_rarity : String = "Common"
 
 var rarities = [
 	{"name": "Common", "weight": 50},
@@ -30,6 +32,14 @@ var rarities = [
 	{"name": "Mythic", "weight": 7.5},
 	{"name": "Legendary", "weight": 2.5}
 ]
+
+const COLOR_TINT = {
+	"Common" : Color(0.221, 0.235, 0.219, 1.0), 
+	"Rare" : Color(0.0, 0.425, 0.095, 1.0),
+	"Epic": Color(0.384, 0.042, 0.564, 1.0),
+	"Mythic": Color(0.43, 0.0, 0.0, 1.0),
+	"Legendary": Color(0.442, 0.422, 0.011, 1.0)
+}
 
 @onready var prizes : Dictionary = {
 	"Engine": engine,
@@ -194,7 +204,10 @@ func _process(delta: float) -> void:
 	if parent.visible == false:
 		return
 	
-	if Input.is_action_just_pressed("spin"):
+	set_wheelspin_color()
+	if Input.is_action_just_pressed("spin") and GameStats.Money >= price:
+		GameStats.Money -= price
+		
 		var easeOutQuadtween = create_tween()
 		easeOutQuadtween.set_trans(Tween.TRANS_CIRC)
 		easeOutQuadtween.set_ease(Tween.EASE_OUT)
@@ -242,3 +255,45 @@ func give_rarity(prize, finalrarity):
 	
 func setup_prizes(child):
 	child.prize_type = prizes.keys().pick_random()
+
+func set_wheelspin_color():
+	if current_wheelspin_rarity == "Common":
+		self.self_modulate = COLOR_TINT.get("Common", Color(1,1,1))
+		rarities[0]["weight"] = 60.0
+		
+	elif current_wheelspin_rarity == "Rare":
+		self.self_modulate = COLOR_TINT.get("Rare", Color(1,1,1)) 
+		rarities[1]["weight"] = 50.0
+		
+	elif current_wheelspin_rarity == "Epic":
+		self.self_modulate = COLOR_TINT.get("Epic", Color(1,1,1)) 
+		rarities[2]["weight"] = 50.0
+		
+	elif current_wheelspin_rarity == "Mythic":
+		self.self_modulate = COLOR_TINT.get("Mythic", Color(1,1,1)) 
+		rarities[3]["weight"] = 50.0
+	
+	elif current_wheelspin_rarity == "Legendary":
+		self.self_modulate = COLOR_TINT.get("Legendary", Color(1,1,1)) 
+		rarities[4]["weight"] = 50.0
+		
+
+func _on_common_pressed() -> void:
+	price = 30.0
+	current_wheelspin_rarity = "Common"
+
+func _on_rare_pressed() -> void:
+	price = 50.0
+	current_wheelspin_rarity = "Rare"
+
+func _on_epic_pressed() -> void:
+	price = 75.0
+	current_wheelspin_rarity = "Epic"
+
+func _on_mythic_pressed() -> void:
+	price = 100.0
+	current_wheelspin_rarity = "Mythic"
+	
+func _on_legendary_pressed() -> void:
+	price = 150.0
+	current_wheelspin_rarity = "Legendary"

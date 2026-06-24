@@ -1,8 +1,6 @@
 extends Control
 
 @onready var GameUI = get_parent().get_node("GameUI")
-@onready var MoneyLabel = %MoneyLabel
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -10,11 +8,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var money = GameStats.Money
-	MoneyLabel.text = "Money: " + str(money)
+	pass
 
-func _on_button_pressed() -> void:
+
+func _on_leave_pressed() -> void:
 	toggle_visibility(GameUI)
+
 
 func toggle_visibility(ui):
 	ui.visible = !ui.visible

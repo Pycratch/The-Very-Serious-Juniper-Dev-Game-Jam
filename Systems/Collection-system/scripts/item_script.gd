@@ -214,7 +214,7 @@ func randomize_rarity():
 
 func finalize_final_prize():
 	#get the prize item using the type as an index to get stuff IDK
-	prize_list = prizes.get(Types.keys()[type])# same as the line under defining type, line iwth a lot of ##
+	prize_list = prizes.get(Types.keys()[type])# same as the line under defining type, line with a lot of ##
 	if not prize_list:
 		return
 	final_prize = prize_list.pick_random()

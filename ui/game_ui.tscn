@@ -13,7 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://r7rmrum3nu5h" path="res://assets/Buttons/WheelspinButton.png" id="11_s2npe"]
 [ext_resource type="Texture2D" uid="uid://dk6wjgj5a5h6x" path="res://assets/Buttons/WheelspinButtonHovered.png" id="12_g2v8e"]
 [ext_resource type="Texture2D" uid="uid://cllgeqcxjrcey" path="res://assets/Buttons/SellButton.png" id="13_g2v8e"]
+[ext_resource type="Texture2D" uid="uid://dh8p6na4q2cqw" path="res://assets/Buttons/RaceButton.png" id="13_ihktq"]
 [ext_resource type="Texture2D" uid="uid://cyioqx3s3m5o0" path="res://assets/Buttons/SellButtonHovered.png" id="14_1kaiv"]
+[ext_resource type="Texture2D" uid="uid://doehc5bwu63o2" path="res://assets/Buttons/RaceButtonHovered.png" id="14_igvt4"]
+[ext_resource type="Texture2D" uid="uid://dovr2hp62erpv" path="res://assets/Buttons/InventoryButton.png" id="17_x8pta"]
+[ext_resource type="Texture2D" uid="uid://diqp1khccr5vn" path="res://assets/Buttons/InventoryButtonHovered.png" id="18_2rmtt"]
 
 [sub_resource type="Gradient" id="Gradient_sjwyb"]
 offsets = PackedFloat32Array(0, 0.40963855)
@@ -28,11 +32,23 @@ texture = ExtResource("11_s2npe")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s2npe"]
 texture = ExtResource("12_g2v8e")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mkj66"]
+texture = ExtResource("13_ihktq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o8ffk"]
+texture = ExtResource("14_igvt4")
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o3stq"]
 texture = ExtResource("13_g2v8e")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1kaiv"]
 texture = ExtResource("14_1kaiv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ihktq"]
+texture = ExtResource("17_x8pta")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_igvt4"]
+texture = ExtResource("18_2rmtt")
 
 [node name="GameUI" type="Control" unique_id=1611855527]
 layout_mode = 3
@@ -134,35 +150,37 @@ size_flags_horizontal = 0
 
 [node name="WHEELSPIN" type="Button" parent="MarginContainer/ButtonContainer" unique_id=1426549872]
 custom_minimum_size = Vector2(250, 125)
+custom_maximum_size = Vector2(250, 125)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_5kh4o")
 theme_override_styles/hover = SubResource("StyleBoxTexture_s2npe")
 
 [node name="RACE" type="Button" parent="MarginContainer/ButtonContainer" unique_id=915199853]
-custom_minimum_size = Vector2(200, 100)
+custom_minimum_size = Vector2(250, 125)
 layout_mode = 2
-text = "RACE"
+theme_override_styles/normal = SubResource("StyleBoxTexture_mkj66")
+theme_override_styles/hover = SubResource("StyleBoxTexture_o8ffk")
 
 [node name="SELL" type="Button" parent="MarginContainer/ButtonContainer" unique_id=1556990983]
-custom_minimum_size = Vector2(200, 100)
+custom_minimum_size = Vector2(250, 125)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_o3stq")
 theme_override_styles/hover = SubResource("StyleBoxTexture_1kaiv")
 
 [node name="INVENTORY" type="Button" parent="MarginContainer/ButtonContainer" unique_id=131373767]
-custom_minimum_size = Vector2(200, 100)
+custom_minimum_size = Vector2(250, 125)
 layout_mode = 2
-text = "INVENTORY"
+theme_override_styles/normal = SubResource("StyleBoxTexture_ihktq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_igvt4")
 
-[node name="MONEY" type="Label" parent="MarginContainer" unique_id=434103674]
-custom_minimum_size = Vector2(200, 200)
-custom_maximum_size = Vector2(200, 200)
+[node name="MoneyLabel" type="Label" parent="MarginContainer" unique_id=434103674]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 100)
+custom_maximum_size = Vector2(200, 100)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-theme_override_font_sizes/font_size = 40
-text = "MONEY:
-100"
+theme_override_font_sizes/font_size = 30
 
 [connection signal="pressed" from="MarginContainer/ButtonContainer/WHEELSPIN" to="." method="_on_wheelspin_pressed"]
 [connection signal="pressed" from="MarginContainer/ButtonContainer/SELL" to="." method="_on_sell_pressed"]
