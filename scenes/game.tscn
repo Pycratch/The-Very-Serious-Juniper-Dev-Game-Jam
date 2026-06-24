@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://b4mhvbhkhkpiq" path="res://assets/Buttons/LegendaryButtonHovered.png" id="20_e1j6l"]
 [ext_resource type="AudioStream" uid="uid://svny87lafhro" path="res://assets/sfx/master_of_dreams_8_bit_arcade_victory_2_014.mp3" id="21_5newe"]
 [ext_resource type="Texture2D" uid="uid://cqpi2buc5dxnb" path="res://assets/ArrowIcon.png" id="21_37s47"]
+[ext_resource type="AudioStream" uid="uid://dyo61e7ikg1al" path="res://assets/sfx/mondamusic-retro-arcade-game-music-512837.mp3" id="22_37s47"]
 [ext_resource type="PackedScene" uid="uid://wsowlu8jy8dx" path="res://ui/game_ui.tscn" id="22_bt5mj"]
 [ext_resource type="PackedScene" uid="uid://dm5d0eopk5mq7" path="res://scenes/main_menu.tscn" id="23_e1j6l"]
 
@@ -47,9 +48,9 @@ position = Vector2(576, 324)
 visible = false
 
 [node name="MainMenuUI" parent="CanvasLayer" unique_id=69001883 instance=ExtResource("23_e1j6l")]
-visible = false
 
 [node name="WheelspinUI" type="Control" parent="CanvasLayer" unique_id=1289705449]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -161,6 +162,10 @@ text = "Money :
 
 [node name="SellUI" parent="CanvasLayer" unique_id=1955161592 instance=ExtResource("8_gee14")]
 visible = false
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="." unique_id=2060442080]
+stream = ExtResource("22_37s47")
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/WheelspinUI/MarginContainer/Left/LEAVE" to="CanvasLayer/WheelspinUI" method="_on_button_pressed"]
 [connection signal="toggled" from="CanvasLayer/WheelspinUI/MarginContainer/Left/COMMON" to="CanvasLayer/WheelspinUI/Wheelspin" method="_on_common_toggled"]

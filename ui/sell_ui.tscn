@@ -3,12 +3,20 @@
 [ext_resource type="Texture2D" uid="uid://d2xqfixleadm" path="res://assets/Buttons/LeaveButton.png" id="1_m4b1v"]
 [ext_resource type="Script" uid="uid://crcu58fjafaxo" path="res://scripts/sell_ui.gd" id="1_qgyeg"]
 [ext_resource type="Texture2D" uid="uid://bbqkaypdueen2" path="res://assets/Buttons/LeaveButtonHovered.png" id="2_8wsmk"]
+[ext_resource type="Texture2D" uid="uid://cllgeqcxjrcey" path="res://assets/Buttons/SellButton.png" id="4_ic3p3"]
+[ext_resource type="Texture2D" uid="uid://cyioqx3s3m5o0" path="res://assets/Buttons/SellButtonHovered.png" id="5_pqp4d"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1kaiv"]
 texture = ExtResource("1_m4b1v")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_upmhx"]
 texture = ExtResource("2_8wsmk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_37s47"]
+texture = ExtResource("4_ic3p3")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bt5mj"]
+texture = ExtResource("5_pqp4d")
 
 [node name="SellUI" type="Control" unique_id=1955161592]
 layout_mode = 3
@@ -46,6 +54,7 @@ size_flags_horizontal = 10
 [node name="SELL" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1958226804]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
-text = "SELL"
+theme_override_styles/normal = SubResource("StyleBoxTexture_37s47")
+theme_override_styles/hover = SubResource("StyleBoxTexture_bt5mj")
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/LEAVE" to="." method="_on_leave_pressed"]
