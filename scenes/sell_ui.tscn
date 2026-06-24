@@ -1,5 +1,14 @@
 [gd_scene format=3 uid="uid://cmspign0mfgg2"]
 
+[ext_resource type="Texture2D" uid="uid://d2xqfixleadm" path="res://assets/Buttons/LeaveButton.png" id="1_m4b1v"]
+[ext_resource type="Texture2D" uid="uid://bbqkaypdueen2" path="res://assets/Buttons/LeaveButtonHovered.png" id="2_8wsmk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1kaiv"]
+texture = ExtResource("1_m4b1v")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_upmhx"]
+texture = ExtResource("2_8wsmk")
+
 [node name="SellUI" type="Control" unique_id=1955161592]
 layout_mode = 3
 anchors_preset = 15
@@ -25,7 +34,8 @@ layout_mode = 2
 [node name="LEAVE" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=461727237]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
-text = "LEAVE"
+theme_override_styles/normal = SubResource("StyleBoxTexture_1kaiv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_upmhx")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=247931524]
 layout_mode = 2

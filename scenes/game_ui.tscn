@@ -10,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://bv14wk3omojye" path="res://assets/PixelArtPhoto/Cupra.png" id="8_o3bws"]
 [ext_resource type="Texture2D" uid="uid://dgy6e4a8mpfnc" path="res://assets/PixelArtPhoto/AlfaRomeo.png" id="9_3huio"]
 [ext_resource type="Texture2D" uid="uid://3r7hgkhyqypf" path="res://assets/PixelArtPhoto/Jaguar.png" id="10_sjwyb"]
+[ext_resource type="Texture2D" uid="uid://r7rmrum3nu5h" path="res://assets/Buttons/WheelspinButton.png" id="11_s2npe"]
+[ext_resource type="Texture2D" uid="uid://dk6wjgj5a5h6x" path="res://assets/Buttons/WheelspinButtonHovered.png" id="12_g2v8e"]
+[ext_resource type="Texture2D" uid="uid://cllgeqcxjrcey" path="res://assets/Buttons/SellButton.png" id="13_g2v8e"]
+[ext_resource type="Texture2D" uid="uid://cyioqx3s3m5o0" path="res://assets/Buttons/SellButtonHovered.png" id="14_1kaiv"]
 
 [sub_resource type="Gradient" id="Gradient_sjwyb"]
 offsets = PackedFloat32Array(0, 0.40963855)
@@ -17,6 +21,18 @@ colors = PackedColorArray(1, 0.7882353, 0.6509804, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_spe2m"]
 gradient = SubResource("Gradient_sjwyb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5kh4o"]
+texture = ExtResource("11_s2npe")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s2npe"]
+texture = ExtResource("12_g2v8e")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o3stq"]
+texture = ExtResource("13_g2v8e")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1kaiv"]
+texture = ExtResource("14_1kaiv")
 
 [node name="GameUI" type="Control" unique_id=1611855527]
 layout_mode = 3
@@ -35,7 +51,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer" unique_id=1996691099]
+[node name="Background" type="TextureRect" parent="MarginContainer" unique_id=1996691099]
 layout_mode = 2
 texture = SubResource("GradientTexture2D_spe2m")
 
@@ -117,9 +133,10 @@ layout_mode = 2
 size_flags_horizontal = 0
 
 [node name="WHEELSPIN" type="Button" parent="MarginContainer/ButtonContainer" unique_id=1426549872]
-custom_minimum_size = Vector2(200, 100)
+custom_minimum_size = Vector2(250, 125)
 layout_mode = 2
-text = "WHEELSPIN"
+theme_override_styles/normal = SubResource("StyleBoxTexture_5kh4o")
+theme_override_styles/hover = SubResource("StyleBoxTexture_s2npe")
 
 [node name="RACE" type="Button" parent="MarginContainer/ButtonContainer" unique_id=915199853]
 custom_minimum_size = Vector2(200, 100)
@@ -129,7 +146,8 @@ text = "RACE"
 [node name="SELL" type="Button" parent="MarginContainer/ButtonContainer" unique_id=1556990983]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
-text = "SELL"
+theme_override_styles/normal = SubResource("StyleBoxTexture_o3stq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1kaiv")
 
 [node name="INVENTORY" type="Button" parent="MarginContainer/ButtonContainer" unique_id=131373767]
 custom_minimum_size = Vector2(200, 100)
