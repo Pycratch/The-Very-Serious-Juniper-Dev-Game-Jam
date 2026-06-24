@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxs3w41jtajcn"
-path="res://.godot/imported/PlayButton.png-509bfdcff107a64497ac90a9d0f00fe2.ctex"
+uid="uid://cyioqx3s3m5o0"
+path="res://.godot/imported/SellButtonHovered.png-2586f094ee0da60cca0fe90560630948.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/PlayButton.png"
-dest_files=["res://.godot/imported/PlayButton.png-509bfdcff107a64497ac90a9d0f00fe2.ctex"]
+source_file="res://assets/Buttons/SellButtonHovered.png"
+dest_files=["res://.godot/imported/SellButtonHovered.png-2586f094ee0da60cca0fe90560630948.ctex"]
 
 [params]
 
