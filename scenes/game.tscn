@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://chd20bl2lulwd"]
+[gd_scene format=3 uid="uid://chd20bl2lulwd"]
 
 [ext_resource type="Script" uid="uid://cjm4j04fxj37l" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://dokoweoac2i78" path="res://scenes/wheelspin.tscn" id="4_p57ef"]
