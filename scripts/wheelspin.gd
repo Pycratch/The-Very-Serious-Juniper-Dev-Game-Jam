@@ -204,10 +204,11 @@ func _process(delta: float) -> void:
 	if parent.visible == false:
 		return
 	
+	reset_weight()
 	set_wheelspin_color()
 	if Input.is_action_just_pressed("spin") and GameStats.Money >= price:
 		GameStats.Money -= price
-		
+		get_parent().disable_all()
 		var easeOutQuadtween = create_tween()
 		easeOutQuadtween.set_trans(Tween.TRANS_CIRC)
 		easeOutQuadtween.set_ease(Tween.EASE_OUT)
@@ -219,7 +220,7 @@ func _process(delta: float) -> void:
 		easeOutQuadtween.tween_property(self, "global_rotation", randi() % 70 + 40, spin_timer)
 		SpinSound.play()
 		await get_tree().create_timer(spin_timer).timeout
-		
+		get_parent().enable_all()
 		var body = Pointer.get_collider()
 		if body:
 			var prize = body.get_child(1).name
@@ -233,7 +234,9 @@ func roll_prize(prize, rarity):
 	if prize_list:
 		final_prize = prize_list.pick_random()
 		give_rarity(final_prize, rarity)
-		
+		print(rarities)
+		reset_weight()
+		#get_parent().untoggle_all()
 		
 func give_rarity(prize, finalrarity):
 	if finalrarity != "":
@@ -259,7 +262,7 @@ func setup_prizes(child):
 func set_wheelspin_color():
 	if current_wheelspin_rarity == "Common":
 		self.self_modulate = COLOR_TINT.get("Common", Color(1,1,1))
-		rarities[0]["weight"] = 60.0
+		rarities[0]["weight"] = 50.0
 		
 	elif current_wheelspin_rarity == "Rare":
 		self.self_modulate = COLOR_TINT.get("Rare", Color(1,1,1)) 
@@ -274,26 +277,39 @@ func set_wheelspin_color():
 		rarities[3]["weight"] = 50.0
 	
 	elif current_wheelspin_rarity == "Legendary":
-		self.self_modulate = COLOR_TINT.get("Legendary", Color(1,1,1)) 
+		self.self_modulate = COLOR_TINT.get("Legendary", Color(1,1,1))
 		rarities[4]["weight"] = 50.0
 		
+func reset_weight():
+	rarities[0]["weight"] = 50.0
+	rarities[1]["weight"] = 25.0
+	rarities[2]["weight"] = 15.0
+	rarities[3]["weight"] = 7.5
+	rarities[4]["weight"] = 2.5
 
-func _on_common_pressed() -> void:
-	price = 30.0
-	current_wheelspin_rarity = "Common"
+func _on_common_toggled(toggled_on: bool) -> void:
+	if toggled_on == true:
+		price = 50.0
+		current_wheelspin_rarity = "Common"
 
-func _on_rare_pressed() -> void:
-	price = 50.0
-	current_wheelspin_rarity = "Rare"
+func _on_rare_toggled(toggled_on: bool) -> void:
+	if toggled_on == true:
+		price = 100.0
+		current_wheelspin_rarity = "Rare"
 
-func _on_epic_pressed() -> void:
-	price = 75.0
-	current_wheelspin_rarity = "Epic"
+func _on_epic_toggled(toggled_on: bool) -> void:
+	if toggled_on == true:
+		price = 250.0
+		current_wheelspin_rarity = "Epic"
 
-func _on_mythic_pressed() -> void:
-	price = 100.0
-	current_wheelspin_rarity = "Mythic"
-	
-func _on_legendary_pressed() -> void:
-	price = 150.0
-	current_wheelspin_rarity = "Legendary"
+func _on_mythic_toggled(toggled_on: bool) -> void:
+	if toggled_on == true:
+		print("Mythic")
+		price = 500.0
+		current_wheelspin_rarity = "Mythic"
+
+func _on_legendary_toggled(toggled_on: bool) -> void:
+	if toggled_on == true:
+		print("Legendary")
+		price = 1500.0
+		current_wheelspin_rarity = "Legendary"

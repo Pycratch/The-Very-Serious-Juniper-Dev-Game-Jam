@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var Money : float = 500.0
+@export var Money : float = 5000.0
 @export var Items : int
 
 # Called when the node enters the scene tree for the first time.

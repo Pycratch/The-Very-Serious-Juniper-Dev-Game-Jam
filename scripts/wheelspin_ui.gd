@@ -19,3 +19,17 @@ func _on_button_pressed() -> void:
 func toggle_visibility(ui):
 	ui.visible = !ui.visible
 	self.visible = !self.visible
+
+func disable_all():
+	$MarginContainer/Left/COMMON.disabled = true
+	$MarginContainer/Left/RARE.disabled = true
+	$MarginContainer/Left/EPIC.disabled = true
+	$MarginContainer/Left/MYTHIC.disabled = true
+	$MarginContainer/Left/LEGENDARY.disabled = true
+	
+func enable_all():
+	$MarginContainer/Left/COMMON.disabled = false
+	$MarginContainer/Left/RARE.disabled = false
+	$MarginContainer/Left/EPIC.disabled = false
+	$MarginContainer/Left/MYTHIC.disabled = false
+	$MarginContainer/Left/LEGENDARY.disabled = false

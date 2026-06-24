@@ -7,6 +7,16 @@
 [ext_resource type="PackedScene" uid="uid://cmspign0mfgg2" path="res://ui/sell_ui.tscn" id="8_gee14"]
 [ext_resource type="Texture2D" uid="uid://d2xqfixleadm" path="res://assets/Buttons/LeaveButton.png" id="8_vtaks"]
 [ext_resource type="Texture2D" uid="uid://bbqkaypdueen2" path="res://assets/Buttons/LeaveButtonHovered.png" id="9_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://c8vpolkvnsus5" path="res://assets/Buttons/CommonIcon.png" id="11_kvuet"]
+[ext_resource type="Texture2D" uid="uid://cmxtebkv3j4fv" path="res://assets/Buttons/CommonIconHovered.png" id="12_trtic"]
+[ext_resource type="Texture2D" uid="uid://bdtqhi14j5h6d" path="res://assets/Buttons/RareIcon.png" id="13_ir15t"]
+[ext_resource type="Texture2D" uid="uid://dngg4xuf57sdv" path="res://assets/Buttons/RareIconHovered.png" id="14_ca42v"]
+[ext_resource type="Texture2D" uid="uid://cu12xclmu2755" path="res://assets/Buttons/EpicButton.png" id="15_rysoc"]
+[ext_resource type="Texture2D" uid="uid://lhjy6qbmsfr4" path="res://assets/Buttons/EpicButtonHovered.png" id="16_ssvqc"]
+[ext_resource type="Texture2D" uid="uid://bygnws02tldw1" path="res://assets/Buttons/MythicButton.png" id="17_5newe"]
+[ext_resource type="Texture2D" uid="uid://ddxaexlvrpuq4" path="res://assets/Buttons/MythicButtonHovered.png" id="18_37s47"]
+[ext_resource type="Texture2D" uid="uid://cgw1sjpditdhs" path="res://assets/Buttons/LegendaryButton.png" id="19_bt5mj"]
+[ext_resource type="Texture2D" uid="uid://b4mhvbhkhkpiq" path="res://assets/Buttons/LegendaryButtonHovered.png" id="20_e1j6l"]
 [ext_resource type="AudioStream" uid="uid://svny87lafhro" path="res://assets/sfx/master_of_dreams_8_bit_arcade_victory_2_014.mp3" id="21_5newe"]
 [ext_resource type="Texture2D" uid="uid://cqpi2buc5dxnb" path="res://assets/ArrowIcon.png" id="21_37s47"]
 [ext_resource type="PackedScene" uid="uid://wsowlu8jy8dx" path="res://ui/game_ui.tscn" id="22_bt5mj"]
@@ -20,6 +30,8 @@ texture = ExtResource("8_vtaks")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ysvq8"]
 texture = ExtResource("9_kvpfn")
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_5newe"]
 
 [node name="game" type="Node2D" unique_id=121537232]
 script = ExtResource("1_lbhrr")
@@ -89,30 +101,51 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_ysvq8")
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
-[node name="COMMON" type="Button" parent="CanvasLayer/WheelspinUI/MarginContainer/Left" unique_id=1853229501]
-custom_minimum_size = Vector2(0, 100)
+[node name="COMMON" type="TextureButton" parent="CanvasLayer/WheelspinUI/MarginContainer/Left" unique_id=266527959]
+custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
-text = "COMMON"
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_5newe")
+texture_normal = ExtResource("11_kvuet")
+texture_pressed = ExtResource("12_trtic")
+stretch_mode = 0
 
-[node name="RARE" type="Button" parent="CanvasLayer/WheelspinUI/MarginContainer/Left" unique_id=334216854]
+[node name="RARE" type="TextureButton" parent="CanvasLayer/WheelspinUI/MarginContainer/Left" unique_id=1383210643]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-text = "RARE"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_5newe")
+texture_normal = ExtResource("13_ir15t")
+texture_pressed = ExtResource("14_ca42v")
+stretch_mode = 0
 
-[node name="EPIC" type="Button" parent="CanvasLayer/WheelspinUI/MarginContainer/Left" unique_id=400179012]
+[node name="EPIC" type="TextureButton" parent="CanvasLayer/WheelspinUI/MarginContainer/Left" unique_id=520568008]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-text = "EPIC"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_5newe")
+texture_normal = ExtResource("15_rysoc")
+texture_pressed = ExtResource("16_ssvqc")
+stretch_mode = 0
 
-[node name="MYTHIC" type="Button" parent="CanvasLayer/WheelspinUI/MarginContainer/Left" unique_id=1198416933]
+[node name="MYTHIC" type="TextureButton" parent="CanvasLayer/WheelspinUI/MarginContainer/Left" unique_id=1962841754]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-text = "MYTHIC"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_5newe")
+texture_normal = ExtResource("17_5newe")
+texture_pressed = ExtResource("18_37s47")
+stretch_mode = 0
 
-[node name="LEGENDARY" type="Button" parent="CanvasLayer/WheelspinUI/MarginContainer/Left" unique_id=1592977120]
+[node name="LEGENDARY" type="TextureButton" parent="CanvasLayer/WheelspinUI/MarginContainer/Left" unique_id=902438253]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-text = "LEGENDARY"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_5newe")
+texture_normal = ExtResource("19_bt5mj")
+texture_pressed = ExtResource("20_e1j6l")
+stretch_mode = 0
 
 [node name="Right" type="VBoxContainer" parent="CanvasLayer/WheelspinUI/MarginContainer" unique_id=293025709]
 layout_mode = 2
@@ -130,8 +163,8 @@ text = "Money :
 visible = false
 
 [connection signal="pressed" from="CanvasLayer/WheelspinUI/MarginContainer/Left/LEAVE" to="CanvasLayer/WheelspinUI" method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/WheelspinUI/MarginContainer/Left/COMMON" to="CanvasLayer/WheelspinUI/Wheelspin" method="_on_common_pressed"]
-[connection signal="pressed" from="CanvasLayer/WheelspinUI/MarginContainer/Left/RARE" to="CanvasLayer/WheelspinUI/Wheelspin" method="_on_rare_pressed"]
-[connection signal="pressed" from="CanvasLayer/WheelspinUI/MarginContainer/Left/EPIC" to="CanvasLayer/WheelspinUI/Wheelspin" method="_on_epic_pressed"]
-[connection signal="pressed" from="CanvasLayer/WheelspinUI/MarginContainer/Left/MYTHIC" to="CanvasLayer/WheelspinUI/Wheelspin" method="_on_mythic_pressed"]
-[connection signal="pressed" from="CanvasLayer/WheelspinUI/MarginContainer/Left/LEGENDARY" to="CanvasLayer/WheelspinUI/Wheelspin" method="_on_legendary_pressed"]
+[connection signal="toggled" from="CanvasLayer/WheelspinUI/MarginContainer/Left/COMMON" to="CanvasLayer/WheelspinUI/Wheelspin" method="_on_common_toggled"]
+[connection signal="toggled" from="CanvasLayer/WheelspinUI/MarginContainer/Left/RARE" to="CanvasLayer/WheelspinUI/Wheelspin" method="_on_rare_toggled"]
+[connection signal="toggled" from="CanvasLayer/WheelspinUI/MarginContainer/Left/EPIC" to="CanvasLayer/WheelspinUI/Wheelspin" method="_on_epic_toggled"]
+[connection signal="toggled" from="CanvasLayer/WheelspinUI/MarginContainer/Left/MYTHIC" to="CanvasLayer/WheelspinUI/Wheelspin" method="_on_mythic_toggled"]
+[connection signal="toggled" from="CanvasLayer/WheelspinUI/MarginContainer/Left/LEGENDARY" to="CanvasLayer/WheelspinUI/Wheelspin" method="_on_legendary_toggled"]
