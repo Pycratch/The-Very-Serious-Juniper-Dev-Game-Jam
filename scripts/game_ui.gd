@@ -2,6 +2,7 @@ extends Control
 
 @onready var WheelspinUI = get_parent().get_node("WheelspinUI")
 @onready var SellUI = get_parent().get_node("SellUI")
+@export var InventoryUI :Control
 @onready var MoneyLabel = %MoneyLabel
 
 # Called when the node enters the scene tree for the first time.
@@ -26,3 +27,8 @@ func toggle_visibility(ui):
 func set_money():
 	var money = GameStats.Money
 	MoneyLabel.text = "Money: " + str(money)
+
+
+func _on_inventory_pressed():
+	if InventoryUI:
+		toggle_visibility(InventoryUI)

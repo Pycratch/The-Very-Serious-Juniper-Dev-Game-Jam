@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemPart" format=3 uid="uid://ci5v57qx6saw4"]
+
+[ext_resource type="Texture2D" uid="uid://c2nf343rkax5i" path="res://assets/Prizes/Icons/AerodynamicsIcon.png" id="1_8ox5m"]
+[ext_resource type="Script" uid="uid://sg7t00nf3ws6" path="res://Systems/Collection-system/scripts/item_script.gd" id="2_rny00"]
+
+[resource]
+script = ExtResource("2_rny00")
+Name = "Common Aerodynamics"
+type = 3
+power = 25.0
+picture = ExtResource("1_8ox5m")
+metadata/_custom_type_script = "uid://sg7t00nf3ws6"

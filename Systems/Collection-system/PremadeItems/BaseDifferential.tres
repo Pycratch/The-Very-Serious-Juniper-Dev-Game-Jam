@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemPart" format=3 uid="uid://b73rw8whftodu"]
+
+[ext_resource type="Texture2D" uid="uid://bqhj4dbcqf4jv" path="res://assets/Prizes/Icons/DifferentialIcon.png" id="1_l85xc"]
+[ext_resource type="Script" uid="uid://sg7t00nf3ws6" path="res://Systems/Collection-system/scripts/item_script.gd" id="2_ionhh"]
+
+[resource]
+script = ExtResource("2_ionhh")
+Name = "Common Differential"
+type = 10
+power = 25.0
+picture = ExtResource("1_l85xc")
+metadata/_custom_type_script = "uid://sg7t00nf3ws6"

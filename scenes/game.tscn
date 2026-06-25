@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cqpi2buc5dxnb" path="res://assets/ArrowIcon.png" id="21_37s47"]
 [ext_resource type="AudioStream" uid="uid://dyo61e7ikg1al" path="res://assets/sfx/mondamusic-retro-arcade-game-music-512837.mp3" id="22_37s47"]
 [ext_resource type="PackedScene" uid="uid://wsowlu8jy8dx" path="res://ui/game_ui.tscn" id="22_bt5mj"]
+[ext_resource type="PackedScene" uid="uid://b8hq76e1rbgdh" path="res://Systems/Collection-system/collection_ui.tscn" id="22_e1j6l"]
 [ext_resource type="PackedScene" uid="uid://dm5d0eopk5mq7" path="res://scenes/main_menu.tscn" id="23_e1j6l"]
 
 [sub_resource type="AudioStreamMP3" id="AudioStreamMP3_5newe"]
@@ -44,8 +45,9 @@ position = Vector2(576, 324)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=332696621]
 
-[node name="GameUI" parent="CanvasLayer" unique_id=1611855527 instance=ExtResource("22_bt5mj")]
+[node name="GameUI" parent="CanvasLayer" unique_id=1611855527 node_paths=PackedStringArray("InventoryUI") instance=ExtResource("22_bt5mj")]
 visible = false
+InventoryUI = NodePath("../CollectionUI")
 
 [node name="MainMenuUI" parent="CanvasLayer" unique_id=69001883 instance=ExtResource("23_e1j6l")]
 
@@ -162,6 +164,10 @@ text = "Money :
 
 [node name="SellUI" parent="CanvasLayer" unique_id=1955161592 instance=ExtResource("8_gee14")]
 visible = false
+
+[node name="CollectionUI" parent="CanvasLayer" unique_id=955670684 node_paths=PackedStringArray("game_ui") instance=ExtResource("22_e1j6l")]
+visible = false
+game_ui = NodePath("../GameUI")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="." unique_id=2060442080]
 stream = ExtResource("22_37s47")

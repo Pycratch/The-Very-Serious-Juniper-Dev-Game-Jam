@@ -3,15 +3,15 @@ class_name ItemPart extends Resource
 enum Types {
 Engine, Tires, Exhaust, Aerodynamics, Supercharger, 
 Transmission, Suspension, Brakes, Turbocharger,
-Fuel_System, Ignition, Differential, Drivetrain,
+Fuel_System, Differential, Drivetrain,
 Weight_Reduction, Cooling_System
 }
 enum Rarities {Common, Rare, Epic, Mythic, Legendary}
 
-var Name :String
-@export var type :Types = Types.Engine
+@export var Name :String
+@export var type :Types
 @export var rarity :Rarities
-@export var price :float = 1000
+@export var price :float = 1
 @export var power :float = 1
 @export var picture :Texture2D = preload("uid://bxog1jit3v6og")
 
@@ -20,21 +20,7 @@ var final_prize :String
 var prize_list :Array
 
 #the types for all the stuff
-var engine_type
-var exhaust_type
-var transmission_type
-var turbocharger_type 
-var fuelsystem_type
-var ignition_type
-var supercharger_type
-var tire_type
-var suspension_type
-var brake_type
-var differential_type
-var drivetrain_type
-var aerodynamics_type
-var weight_reduction_type
-var cooling_system_type
+
 
 var prizes : Dictionary = {
 	"Engine": engine,
@@ -51,6 +37,7 @@ var prizes : Dictionary = {
 	"Differential": differential,
 	"Fuel_System": fuel_system,
 	"Weight_Reduction": weight_reduction
+
 }
 
 var engine : Array = [
@@ -173,13 +160,21 @@ var cooling_system : Array = [
 ]
 
 func _init():
+	Name = Rarities.keys()[rarity] + " " + Types.keys()[type]
+	print(type)
+	#print(type_string)
+	#rodeo()
+	#print(typeof(Types.keys()[type]))
+	#print(Types.keys().find("Engine")) #This will set type from a string
+	
+
+func rodeo():
 	set_up_prizes()
 	randomize_type()
 	randomize_rarity()
 	finalize_final_prize()
 	calculate_price()
 	calculate_power()
-	#print(typeof(Types.keys()[type]))
 	Name = Rarities.keys()[rarity] + " " + final_prize
 
 func set_up_prizes():
@@ -200,30 +195,47 @@ func set_up_prizes():
 		"Weight_Reduction": weight_reduction
 	}
 
+var type_string :String
+
 func randomize_type():
 	#trying to randomize type and giving it an output of the name of the type
 	
 	type = Types.values().pick_random()######
 	#print(Types.keys()[type])#prints out the index of type
+	type_string = Types.keys()[type]
+	#print(type_string)
 
+var rarity_string :String
 func randomize_rarity():
 	#randomize rarity weighted
 	rarity = Rarities.values()[rng.rand_weighted([20.0, 10.0, 6, 3.0, 1.0])]
 	#prints out the rarity as a string
 	#print(Rarities.keys()[rarity])
+	rarity_string = Rarities.keys()[rarity]
+	Name = Rarities.keys()[rarity] + " " + final_prize
+	return rarity_string
+
+func set_rarity(rarity):
+	rarity_string = rarity
+	rarity = Rarities.values()[Rarities.keys().find(rarity_string)]
+	#rarity_string = Rarities.keys()[rarity]
+	Name = Rarities.keys()[rarity] + " " + final_prize
 
 func finalize_final_prize():
 	#get the prize item using the type as an index to get stuff IDK
+	
 	prize_list = prizes.get(Types.keys()[type])# same as the line under defining type, line with a lot of ##
 	if not prize_list:
 		return
 	final_prize = prize_list.pick_random()
+	Name = Rarities.keys()[rarity] + " " + final_prize
 
 func calculate_price():
 	if not prize_list:
 		return
 	var prize_index = prize_list.find(final_prize) + 1
-	price = prize_index * 50
+	var prize_index2 = (rarity + 1) * 5
+	price = prize_index2 * 50 + prize_index * 100
 
 
 func calculate_power():
@@ -231,5 +243,6 @@ func calculate_power():
 		return
 	#get the index of the itemtype from the array
 	var prize_index = prize_list.find(final_prize) + 1
-	power = prize_index * 25
+	var prize_index2 = (rarity + 1) * 5
+	power = prize_index2 * 10 + prize_index * 10
 	print("power calculated")

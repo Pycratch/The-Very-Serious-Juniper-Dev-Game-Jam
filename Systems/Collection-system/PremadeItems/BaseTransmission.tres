@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemPart" format=3 uid="uid://ujyiabxh4ckp"]
+
+[ext_resource type="Texture2D" uid="uid://c67x6vhshyhx3" path="res://assets/Prizes/Icons/TransmissionIcon.png" id="1_v4by6"]
+[ext_resource type="Script" uid="uid://sg7t00nf3ws6" path="res://Systems/Collection-system/scripts/item_script.gd" id="2_chv6d"]
+
+[resource]
+script = ExtResource("2_chv6d")
+Name = "Common Transmission"
+type = 5
+power = 25.0
+picture = ExtResource("1_v4by6")
+metadata/_custom_type_script = "uid://sg7t00nf3ws6"

@@ -51,11 +51,12 @@ const COLOR_TINT = {
 	"Suspension": suspension,
 	"Turbocharger": turbocharger,
 	"Supercharger": supercharger,
-	"Cooling System": cooling_system,
+	"Cooling_System": cooling_system,
 	"Drivetrain": drivetrain,
 	"Differential": differential,
-	"Fuel System": fuel_system,
-	"Weight Reduction": weight_reduction
+	"Fuel_System": fuel_system,
+	"Weight_Reduction": weight_reduction
+
 }
 
 @onready var prizes_icons : Dictionary = {
@@ -68,11 +69,11 @@ const COLOR_TINT = {
 	"Suspension": suspension_icon,
 	"Turbocharger": turbocharger_icon,
 	"Supercharger": supercharger_icon,
-	"Cooling System": cooling_system_icon,
+	"Cooling_System": cooling_system_icon,
 	"Drivetrain": drivetrain_icon,
 	"Differential": differential_icon,
-	"Fuel System": fuel_system_icon,
-	"Weight Reduction": weight_reduction_icon
+	"Fuel_System": fuel_system_icon,
+	"Weight_Reduction": weight_reduction_icon
 }
 
 var engine : Array = [
@@ -103,7 +104,7 @@ var fuel_system : Array = [
 	"Performance Fuel Pump",
 	"Race Injectors",
 	"E85 Conversion",
-    "Race Fuel System"
+    "Race Fuel_System"
 ]
 
 var ignition : Array = [
@@ -183,8 +184,8 @@ var weight_reduction : Array = [
 	"Lightweight Battery",
 	"Carbon Hood",
 	"Carbon Panels",
-	"Full Weight Reduction",
-    "Race Weight Reduction"
+	"Full Weight_Reduction",
+    "Race Weight_Reduction"
 ]
 
 var cooling_system : Array = [
@@ -198,6 +199,7 @@ var cooling_system : Array = [
 func _ready() -> void:
 	pass
 	
+var endItem :ItemPart
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -207,6 +209,9 @@ func _process(delta: float) -> void:
 	reset_weight()
 	set_wheelspin_color()
 	if Input.is_action_just_pressed("spin") and GameStats.Money >= price:
+		#create new end item?
+		endItem = ItemPart.new()
+		endItem.rodeo()
 		GameStats.Money -= price
 		get_parent().disable_all()
 		var easeOutQuadtween = create_tween()
@@ -225,14 +230,17 @@ func _process(delta: float) -> void:
 		if body:
 			var prize = body.get_child(1).name
 			var rarity = body.rolled_rarity
+			#set endItem rarity
+			endItem.rarity = endItem.Rarities.values()[endItem.Rarities.keys().find(rarity)]
 			roll_prize(prize, rarity)
+			Collection.add_item(endItem)
 			
 
 func roll_prize(prize, rarity):
 	WinSound.play()
-	var prize_list = prizes.get(prize)
+	var prize_list = endItem.prizes.get(prize)
 	if prize_list:
-		final_prize = prize_list.pick_random()
+		final_prize = endItem.final_prize
 		give_rarity(final_prize, rarity)
 		print(rarities)
 		reset_weight()
@@ -241,23 +249,32 @@ func roll_prize(prize, rarity):
 func give_rarity(prize, finalrarity):
 	if finalrarity != "":
 		print(finalrarity + " " + prize)
+		endItem.set_rarity(finalrarity)
 		return finalrarity
 	
 	var first_rolled_rarity : float
 	var total_weight : int = 0
 	for rarity in rarities:
 		total_weight += rarity["weight"]
-		
-	var roll = randf_range(0, total_weight)
-	for rarity in rarities: #Hier wird die Rarity gerollt
-		first_rolled_rarity += rarity["weight"]
-		if roll < first_rolled_rarity:
-			return rarity["name"]
+	
+	endItem.randomize_rarity()
+	
+	finalrarity = endItem.rarity_string
+	endItem.set_rarity(finalrarity)
+	return finalrarity
+	
+	#var roll = randf_range(0, total_weight)
+	#for rarity in rarities: #Hier wird die Rarity gerollt
+	#	first_rolled_rarity += rarity["weight"]
+	#	if roll < first_rolled_rarity:
+	#		return rarity["name"]
 			
 	print("fallback")
 	
 func setup_prizes(child):
-	child.prize_type = prizes.keys().pick_random()
+	child.prize_type = endItem.prizes.keys().pick_random()#prizes.keys().pick_random()
+	#print(child.prize_type)
+
 
 func set_wheelspin_color():
 	if current_wheelspin_rarity == "Common":

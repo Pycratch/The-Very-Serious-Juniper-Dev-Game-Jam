@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bbqkaypdueen2" path="res://assets/Buttons/LeaveButtonHovered.png" id="2_8wsmk"]
 [ext_resource type="Texture2D" uid="uid://cllgeqcxjrcey" path="res://assets/Buttons/SellButton.png" id="4_ic3p3"]
 [ext_resource type="Texture2D" uid="uid://cyioqx3s3m5o0" path="res://assets/Buttons/SellButtonHovered.png" id="5_pqp4d"]
+[ext_resource type="PackedScene" uid="uid://c7h7fdumm8wbo" path="res://scenes/sell_container.tscn" id="6_pqp4d"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1kaiv"]
 texture = ExtResource("1_m4b1v")
@@ -48,6 +49,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_1kaiv")
 theme_override_styles/hover = SubResource("StyleBoxTexture_upmhx")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=247931524]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 10
 
@@ -56,5 +58,28 @@ custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_37s47")
 theme_override_styles/hover = SubResource("StyleBoxTexture_bt5mj")
+
+[node name="SellContainer" parent="." unique_id=955670684 instance=ExtResource("6_pqp4d")]
+layout_mode = 1
+offset_left = 204.0
+offset_right = -199.0
+
+[node name="MoneyLabel" type="Label" parent="." unique_id=845593742]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -235.0
+offset_top = -108.0
+offset_right = -38.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "AAAA"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/LEAVE" to="." method="_on_leave_pressed"]

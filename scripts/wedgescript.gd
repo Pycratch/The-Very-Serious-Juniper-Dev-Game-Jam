@@ -40,4 +40,5 @@ func get_icon(type):
 	if type:
 		get_child(1).texture = texture
 		get_child(1).scale = Vector2(3, 3)
+		get_parent().endItem.picture = texture
 	

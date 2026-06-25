@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemPart" format=3 uid="uid://cuc3iuiv0dwbe"]
+
+[ext_resource type="Texture2D" uid="uid://dvb6m4qtlnoux" path="res://assets/Prizes/Icons/EngineIcon.png" id="1_4g2fy"]
+[ext_resource type="Script" uid="uid://sg7t00nf3ws6" path="res://Systems/Collection-system/scripts/item_script.gd" id="2_b0cif"]
+
+[resource]
+script = ExtResource("2_b0cif")
+Name = "Common Engine"
+power = 25.0
+picture = ExtResource("1_4g2fy")
+metadata/_custom_type_script = "uid://sg7t00nf3ws6"

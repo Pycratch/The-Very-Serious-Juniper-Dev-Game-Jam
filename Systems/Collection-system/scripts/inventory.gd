@@ -14,5 +14,8 @@ func add_item(part :ItemPart):
 
 
 #Function to remove an item in the inventory
-func delete_item(index):
+func delete_item_index(index):
 	Items.remove_at(index)
+
+func delete_item_list(item :ItemPart):
+	Items.erase(item)
