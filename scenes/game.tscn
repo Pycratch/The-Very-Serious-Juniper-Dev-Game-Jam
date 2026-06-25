@@ -46,10 +46,10 @@ position = Vector2(576, 324)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=332696621]
 
 [node name="GameUI" parent="CanvasLayer" unique_id=1611855527 node_paths=PackedStringArray("InventoryUI") instance=ExtResource("22_bt5mj")]
-visible = false
 InventoryUI = NodePath("../CollectionUI")
 
 [node name="MainMenuUI" parent="CanvasLayer" unique_id=69001883 instance=ExtResource("23_e1j6l")]
+visible = false
 
 [node name="WheelspinUI" type="Control" parent="CanvasLayer" unique_id=1289705449]
 visible = false

@@ -6,6 +6,7 @@ extends Control
 
 const ITEM_SLOT = preload("uid://crqxbbtpnsvyf")
 var deleted_slot #variable for deleting a slot
+var given_items : Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,6 +43,7 @@ func set_properties():
 		if index >= Collection.Items.size():
 			break  #more slots than items, nothing left to assign
 		slots[index].input_slot = Collection.Items[index]
+		given_items.append(Collection.Items[index])
 
 func toggle_visibility(ui):
 	ui.visible = !ui.visible

@@ -1,0 +1,217 @@
+[gd_scene format=3 uid="uid://bebs22ybec0ga"]
+
+[ext_resource type="Script" uid="uid://bqwe00obhp68w" path="res://scripts/assign_parts.gd" id="1_yi6bh"]
+
+[node name="AssignParts" type="Control" unique_id=939137576]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yi6bh")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=606410335]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -8.0
+offset_right = -6.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1773061398]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Labels" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=979428532]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/Labels" unique_id=28310122]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="LabelEngine" type="Label" parent="MarginContainer/VBoxContainer/Labels" unique_id=1853725977]
+custom_minimum_size = Vector2(75, 0)
+custom_maximum_size = Vector2(75, -1)
+layout_mode = 2
+text = "Engine"
+
+[node name="LabelTires" type="Label" parent="MarginContainer/VBoxContainer/Labels" unique_id=720384566]
+custom_minimum_size = Vector2(75, 0)
+custom_maximum_size = Vector2(75, -1)
+layout_mode = 2
+text = "Tires"
+
+[node name="LabelExhaust" type="Label" parent="MarginContainer/VBoxContainer/Labels" unique_id=1316756416]
+custom_minimum_size = Vector2(75, 0)
+custom_maximum_size = Vector2(75, -1)
+layout_mode = 2
+text = "Exhaust"
+
+[node name="LabelAerodynamics" type="Label" parent="MarginContainer/VBoxContainer/Labels" unique_id=1450397132]
+custom_minimum_size = Vector2(75, 0)
+custom_maximum_size = Vector2(75, -1)
+layout_mode = 2
+text = "Aerodyn."
+
+[node name="LabelBrake" type="Label" parent="MarginContainer/VBoxContainer/Labels" unique_id=856662385]
+custom_minimum_size = Vector2(75, 0)
+custom_maximum_size = Vector2(75, -1)
+layout_mode = 2
+text = "Brake"
+
+[node name="LabelTransmission" type="Label" parent="MarginContainer/VBoxContainer/Labels" unique_id=1699574888]
+custom_minimum_size = Vector2(75, 0)
+custom_maximum_size = Vector2(75, -1)
+layout_mode = 2
+text = "Transmis."
+
+[node name="LabelSuspension" type="Label" parent="MarginContainer/VBoxContainer/Labels" unique_id=1283309711]
+custom_minimum_size = Vector2(75, 0)
+custom_maximum_size = Vector2(75, -1)
+layout_mode = 2
+text = "Suspens."
+
+[node name="LabelTurbocharger" type="Label" parent="MarginContainer/VBoxContainer/Labels" unique_id=1142109914]
+custom_minimum_size = Vector2(75, 0)
+custom_maximum_size = Vector2(75, -1)
+layout_mode = 2
+text = "Turboch."
+
+[node name="LabelSupercharger" type="Label" parent="MarginContainer/VBoxContainer/Labels" unique_id=1283204128]
+custom_minimum_size = Vector2(75, 0)
+custom_maximum_size = Vector2(75, -1)
+layout_mode = 2
+text = "Superch."
+
+[node name="LabelCooling_System" type="Label" parent="MarginContainer/VBoxContainer/Labels" unique_id=1386190685]
+custom_minimum_size = Vector2(75, 0)
+custom_maximum_size = Vector2(75, -1)
+layout_mode = 2
+text = "Cooling."
+
+[node name="LabelDrivetrain" type="Label" parent="MarginContainer/VBoxContainer/Labels" unique_id=237495262]
+custom_minimum_size = Vector2(75, 0)
+custom_maximum_size = Vector2(75, -1)
+layout_mode = 2
+text = "Drivetrain"
+
+[node name="LabelDifferential" type="Label" parent="MarginContainer/VBoxContainer/Labels" unique_id=259267982]
+custom_minimum_size = Vector2(75, 0)
+custom_maximum_size = Vector2(75, -1)
+layout_mode = 2
+text = "Differen."
+
+[node name="LabelFuel_System" type="Label" parent="MarginContainer/VBoxContainer/Labels" unique_id=1760079722]
+custom_minimum_size = Vector2(75, 0)
+custom_maximum_size = Vector2(75, -1)
+layout_mode = 2
+text = "Fuel Sys."
+
+[node name="LabelWeight_Reduction" type="Label" parent="MarginContainer/VBoxContainer/Labels" unique_id=1947648463]
+custom_minimum_size = Vector2(75, 0)
+custom_maximum_size = Vector2(75, -1)
+layout_mode = 2
+text = "Weight Re."
+
+[node name="Dropdown" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1222616970]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/Dropdown" unique_id=1915592158]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="Engine" type="OptionButton" parent="MarginContainer/VBoxContainer/Dropdown" unique_id=352475847]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Tires" type="OptionButton" parent="MarginContainer/VBoxContainer/Dropdown" unique_id=557259884]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Exhaust" type="OptionButton" parent="MarginContainer/VBoxContainer/Dropdown" unique_id=889609115]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Aerodynamics" type="OptionButton" parent="MarginContainer/VBoxContainer/Dropdown" unique_id=1401131753]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Brake" type="OptionButton" parent="MarginContainer/VBoxContainer/Dropdown" unique_id=246017732]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Transmission" type="OptionButton" parent="MarginContainer/VBoxContainer/Dropdown" unique_id=1042384168]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Suspension" type="OptionButton" parent="MarginContainer/VBoxContainer/Dropdown" unique_id=594453229]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Turbocharger" type="OptionButton" parent="MarginContainer/VBoxContainer/Dropdown" unique_id=1166150896]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Supercharger" type="OptionButton" parent="MarginContainer/VBoxContainer/Dropdown" unique_id=9129183]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Cooling_System" type="OptionButton" parent="MarginContainer/VBoxContainer/Dropdown" unique_id=1044973963]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Drivetrain" type="OptionButton" parent="MarginContainer/VBoxContainer/Dropdown" unique_id=2031507373]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Differential" type="OptionButton" parent="MarginContainer/VBoxContainer/Dropdown" unique_id=861717665]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Fuel_System" type="OptionButton" parent="MarginContainer/VBoxContainer/Dropdown" unique_id=814199224]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Weight_Reduction" type="OptionButton" parent="MarginContainer/VBoxContainer/Dropdown" unique_id=697368080]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer" unique_id=704603483]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
