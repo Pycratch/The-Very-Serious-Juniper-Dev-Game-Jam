@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://chd20bl2lulwd"]
 
 [ext_resource type="Script" uid="uid://cjm4j04fxj37l" path="res://scripts/game.gd" id="1_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://bfuyj1dlgfli6" path="res://scenes/game_stats.tscn" id="2_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://dokoweoac2i78" path="res://scenes/wheelspin.tscn" id="4_p57ef"]
 [ext_resource type="Script" uid="uid://du6331ec8jk8y" path="res://scripts/wheelspin_ui.gd" id="4_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://cmspign0mfgg2" path="res://ui/sell_ui.tscn" id="8_gee14"]
@@ -41,8 +40,6 @@ script = ExtResource("1_lbhrr")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1855814309]
 position = Vector2(576, 324)
 
-[node name="GameStats" parent="." unique_id=1251663651 instance=ExtResource("2_kvpfn")]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=332696621]
 
 [node name="GameUI" parent="CanvasLayer" unique_id=1611855527 node_paths=PackedStringArray("InventoryUI") instance=ExtResource("22_bt5mj")]
@@ -53,6 +50,7 @@ InventoryUI = NodePath("../CollectionUI")
 visible = false
 
 [node name="WheelspinUI" type="Control" parent="CanvasLayer" unique_id=1289705449]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -188,7 +186,6 @@ text = "Money :
 visible = false
 
 [node name="CollectionUI" parent="CanvasLayer" unique_id=955670684 node_paths=PackedStringArray("game_ui") instance=ExtResource("22_e1j6l")]
-visible = false
 game_ui = NodePath("../GameUI")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="." unique_id=2060442080]

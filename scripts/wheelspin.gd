@@ -26,14 +26,15 @@ var final_prize : String
 var spin_timer : float = 2.5
 var price : float = 30.0
 var current_wheelspin_rarity : String = "Common"
+var can_spin = true
 
-var rarities = [
-	{"name": "Common", "weight": 50},
-	{"name": "Rare", "weight": 25},
-	{"name": "Epic", "weight": 15},
-	{"name": "Mythic", "weight": 7.5},
-	{"name": "Legendary", "weight": 2.5}
-]
+var current_weights = {
+	"Common": 50,
+	"Rare": 25,
+	"Epic": 15,
+	"Mythic": 7.5,
+	"Legendary": 2.5
+}
 
 const COLOR_TINT = {
 	"Common" : Color(0.221, 0.235, 0.219, 1.0), 
@@ -206,14 +207,22 @@ func _process(delta: float) -> void:
 	if parent.visible == false:
 		return
 	
-	#reset_weight()
-	#set_wheelspin_color()
-	if Input.is_action_just_pressed("spin") and GameStats.Money >= price and parent.visible:
+	if Input.is_action_just_pressed("spin") and GameStats.Money >= price and parent.visible and can_spin:
+		can_spin = false
 		#create new end item?
-		endItem = ItemPart.new()
-		endItem.rodeo()
 		GameStats.Money -= price
+		endItem = ItemPart.new()
+		
+		endItem.common_weight = current_weights["Common"]
+		endItem.rare_weight = current_weights["Rare"]
+		endItem.epic_weight = current_weights["Epic"]
+		endItem.mythic_weight = current_weights["Mythic"]
+		endItem.legendary_weight = current_weights["Legendary"]
+		
+		endItem.rodeo()
+		
 		get_parent().disable_all()
+		
 		var easeOutQuadtween = create_tween()
 		easeOutQuadtween.set_trans(Tween.TRANS_CIRC)
 		easeOutQuadtween.set_ease(Tween.EASE_OUT)
@@ -225,6 +234,7 @@ func _process(delta: float) -> void:
 		easeOutQuadtween.tween_property(self, "global_rotation", randi() % 70 + 40, spin_timer)
 		SpinSound.play()
 		await get_tree().create_timer(spin_timer).timeout
+		can_spin = true
 		get_parent().enable_all()
 		var body = Pointer.get_collider()
 		if body:
@@ -234,86 +244,96 @@ func _process(delta: float) -> void:
 			endItem.rarity = endItem.Rarities.values()[endItem.Rarities.keys().find(rarity)]
 			roll_prize(prize, rarity)
 			Collection.add_item(endItem)
+			EventBus.inventory_updated.emit()
 			
+func change_wheel_rarity(new_rarity):
+	current_wheelspin_rarity = new_rarity
+	set_wheelspin_color()
+
 
 func roll_prize(prize, rarity):
 	WinSound.play()
 	var prize_list = endItem.prizes.get(prize)
 	if prize_list:
-		final_prize = endItem.final_prize
+		var final_variant = prize_list.pick_random()
+		
+		final_prize = final_variant
+		endItem.final_prize = final_variant
+		
+		if ItemPart.Types.has(prize):
+			endItem.type = ItemPart.Types[prize]
+			
+		endItem.picture = prizes_icons[prize]
+			
 		give_rarity(final_prize, rarity)
 		reset_weight()
+		set_wheelspin_color()
 		
-func give_rarity(prize, finalrarity):
-	if finalrarity != "":
-		print(finalrarity + " " + prize)
-		FinalPrize.text = "Prize: \n" + finalrarity + " \n" + prize
-		endItem.set_rarity(finalrarity)
-		return finalrarity
+func give_rarity(prize, final_prize):
+	if final_prize != "":
+		print(final_prize + " " + prize)
+		FinalPrize.text = "Prize: \n" + final_prize + " \n" + prize
+		endItem.set_rarity(final_prize)
+		return final_prize
 	
 	endItem.randomize_rarity()
 	
-	finalrarity = endItem.rarity_string
-	endItem.set_rarity(finalrarity)
-	return finalrarity
+	final_prize = endItem.rarity_string
+	return final_prize
 			
 	print("fallback")
 	
 func setup_prizes(child):
 	child.prize_type = endItem.prizes.keys().pick_random()
-	child.temp_prize_type = prizes.keys().pick_random()
-	#print(child.prize_type)
 
 
 func set_wheelspin_color():
-	if current_wheelspin_rarity == "Common":
-		self.self_modulate = COLOR_TINT.get("Common", Color(1,1,1))
-		endItem.common_weight = 50.0
-		
-	elif current_wheelspin_rarity == "Rare":
-		self.self_modulate = COLOR_TINT.get("Rare", Color(1,1,1)) 
-		endItem.rare_weight = 50.0
-		
-	elif current_wheelspin_rarity == "Epic":
-		self.self_modulate = COLOR_TINT.get("Epic", Color(1,1,1)) 
-		endItem.epic_weight = 50.0
-		
-	elif current_wheelspin_rarity == "Mythic":
-		self.self_modulate = COLOR_TINT.get("Mythic", Color(1,1,1)) 
-		endItem.mythic_weight = 50.0
+	if COLOR_TINT.has(current_wheelspin_rarity):
+		self.self_modulate = COLOR_TINT[current_wheelspin_rarity]
 	
-	elif current_wheelspin_rarity == "Legendary":
-		self.self_modulate = COLOR_TINT.get("Legendary", Color(1,1,1))
-		endItem.legendary_weight = 50.0
+	reset_weight()
+	
+	match current_wheelspin_rarity:
+		"Common": current_weights["Common"] = 50.0
+		"Rare": current_weights["Rare"] = 50.0
+		"Epic": current_weights["Epic"] = 50.0
+		"Mythic": current_weights["Mythic"] = 50.0
+		"Legendary": current_weights["Legendary"] = 50.0
 		
 func reset_weight():
-	endItem.common_weight = 50.0
-	endItem.rare_weight = 25.0
-	endItem.epic_weight = 15.0
-	endItem.mythic_weight = 7.5
-	endItem.legendary_weight = 2.5
+	current_weights["Common"] = 50.0
+	current_weights["Rare"] = 25.0
+	current_weights["Epic"] = 15.0
+	current_weights["Mythic"] = 7.5
+	current_weights["Legendary"] = 2.5
 
 func _on_common_toggled(toggled_on: bool) -> void:
 	if toggled_on == true:
 		price = 50.0
 		current_wheelspin_rarity = "Common"
-
+		change_wheel_rarity("Common")
+		
 func _on_rare_toggled(toggled_on: bool) -> void:
 	if toggled_on == true:
 		price = 100.0
 		current_wheelspin_rarity = "Rare"
-
+		change_wheel_rarity("Rare")
+		
 func _on_epic_toggled(toggled_on: bool) -> void:
 	if toggled_on == true:
 		price = 250.0
 		current_wheelspin_rarity = "Epic"
+		change_wheel_rarity("Epic")
 
 func _on_mythic_toggled(toggled_on: bool) -> void:
 	if toggled_on == true:
 		price = 500.0
 		current_wheelspin_rarity = "Mythic"
+		change_wheel_rarity("Mythic")
 
 func _on_legendary_toggled(toggled_on: bool) -> void:
 	if toggled_on == true:
 		price = 1500.0
 		current_wheelspin_rarity = "Legendary"
+		change_wheel_rarity("Legendary")
+		
