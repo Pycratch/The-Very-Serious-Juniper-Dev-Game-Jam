@@ -1,9 +1,51 @@
 [gd_scene format=4 uid="uid://ydrqfua7bxvg"]
 
 [ext_resource type="Texture2D" uid="uid://cx3fcq6yqr1vw" path="res://assets/Yaya_assets/cars-tracks.png" id="1_7rcc2"]
+[ext_resource type="Texture2D" uid="uid://b0d3tu03etob0" path="res://assets/Yaya_assets/background.png" id="1_cb3yj"]
 [ext_resource type="Texture2D" uid="uid://ppjijqfcsyo5" path="res://assets/Yaya_assets/Stands.png" id="1_wwogq"]
+[ext_resource type="PackedScene" uid="uid://boamnbvsnftre" path="res://Racing/car.tscn" id="4_lyb4g"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lyb4g"]
+texture = ExtResource("1_cb3yj")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_knkrb"]
+sources/0 = SubResource("TileSetAtlasSource_lyb4g")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cb3yj"]
 texture = ExtResource("1_7rcc2")
@@ -49,10 +91,25 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_cb3yj")
 
+[sub_resource type="Curve2D" id="Curve2D_cb3yj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 191, 204, 0, 0, 0, 0, 946, 190, 0, 0, 0, 0, 939, 476, 0, 0, 0, 0, 198, 484, 0, 0, 0, 0, 191, 204)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_lyb4g"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 137, 138, 0, 0, 0, 0, 983, 142, 0, 0, 0, 0, 984, 539, 0, 0, 0, 0, 138, 562, 0, 0, 0, 0, 137, 138)
+}
+point_count = 5
+
 [node name="Racing" type="Node2D" unique_id=2028540428]
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=447539598]
+scale = Vector2(3, 3)
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAQAAAAAAAEAAAABAAQAAAAAAAIAAAABAAQAAAAAAAMAAAABAAQAAAAAAAQAAAABAAQAAAAAAAUAAAABAAQAAAAAAAYAAAABAAQAAAAAAAcAAAABAAQAAAAAAAgAAAABAAQAAAAAAAkAAAABAAQAAAAAAAoAAAABAAQAAAAAAAsAAAABAAQAAAAAAAwAAAABAAQAAAAAAA0AAAABAAQAAAABAAAAAAABAAQAAAABAAEAAAABAAQAAAABAAIAAAABAAQAAAABAAMAAAABAAQAAAABAAQAAAABAAQAAAABAAUAAAABAAQAAAABAAYAAAABAAQAAAABAAcAAAABAAQAAAABAAgAAAABAAQAAAABAAkAAAABAAQAAAABAAoAAAABAAQAAAABAAsAAAABAAQAAAABAAwAAAABAAQAAAABAA0AAAABAAQAAAACAAAAAAABAAQAAAACAAEAAAABAAQAAAACAAIAAAABAAQAAAACAAMAAAABAAQAAAACAAQAAAABAAQAAAACAAUAAAABAAQAAAACAAYAAAABAAQAAAACAAcAAAABAAQAAAACAAgAAAABAAQAAAACAAkAAAABAAQAAAACAAoAAAABAAQAAAACAAsAAAABAAQAAAACAAwAAAABAAQAAAACAA0AAAABAAQAAAADAAAAAAABAAQAAAADAAEAAAABAAQAAAADAAIAAAABAAQAAAADAAMAAAABAAQAAAADAAQAAAABAAQAAAADAAUAAAABAAQAAAADAAYAAAABAAQAAAADAAcAAAABAAQAAAADAAgAAAABAAQAAAADAAkAAAABAAQAAAADAAoAAAABAAQAAAADAAsAAAABAAQAAAADAAwAAAABAAQAAAADAA0AAAABAAQAAAAEAAAAAAABAAQAAAAEAAEAAAABAAQAAAAEAAIAAAABAAQAAAAEAAMAAAABAAQAAAAEAAQAAAABAAQAAAAEAAUAAAABAAQAAAAEAAYAAAABAAQAAAAEAAcAAAABAAQAAAAEAAgAAAABAAQAAAAEAAkAAAABAAQAAAAEAAoAAAABAAQAAAAEAAsAAAABAAQAAAAEAAwAAAABAAQAAAAEAA0AAAABAAQAAAAFAAAAAAABAAQAAAAFAAEAAAABAAQAAAAFAAIAAAABAAQAAAAFAAMAAAABAAQAAAAFAAQAAAABAAQAAAAFAAUAAAABAAQAAAAFAAYAAAABAAQAAAAFAAcAAAABAAQAAAAFAAgAAAABAAQAAAAFAAkAAAABAAQAAAAFAAoAAAABAAQAAAAFAAsAAAABAAQAAAAFAAwAAAABAAQAAAAFAA0AAAABAAQAAAAGAAAAAAABAAQAAAAGAAEAAAABAAQAAAAGAAIAAAABAAQAAAAGAAMAAAABAAQAAAAGAAQAAAABAAQAAAAGAAUAAAABAAQAAAAGAAYAAAABAAQAAAAGAAcAAAABAAQAAAAGAAgAAAABAAQAAAAGAAkAAAABAAQAAAAGAAoAAAABAAQAAAAGAAsAAAABAAQAAAAGAAwAAAABAAQAAAAGAA0AAAABAAQAAAAHAAAAAAABAAQAAAAHAAEAAAABAAQAAAAHAAIAAAABAAQAAAAHAAMAAAABAAQAAAAHAAQAAAABAAQAAAAHAAUAAAABAAQAAAAHAAYAAAABAAQAAAAHAAcAAAABAAQAAAAHAAgAAAABAAQAAAAHAAkAAAABAAQAAAAHAAoAAAABAAQAAAAHAAsAAAABAAQAAAAHAAwAAAABAAQAAAAHAA0AAAABAAQAAAAIAAAAAAABAAQAAAAIAAEAAAABAAQAAAAIAAIAAAABAAQAAAAIAAMAAAABAAQAAAAIAAQAAAABAAQAAAAIAAUAAAABAAQAAAAIAAYAAAABAAQAAAAIAAcAAAABAAQAAAAIAAgAAAABAAQAAAAIAAkAAAABAAQAAAAIAAoAAAABAAQAAAAIAAsAAAABAAQAAAAIAAwAAAABAAQAAAAIAA0AAAABAAQAAAAJAAAAAAABAAQAAAAJAAEAAAABAAQAAAAJAAIAAAABAAQAAAAJAAMAAAABAAQAAAAJAAQAAAABAAQAAAAJAAUAAAABAAQAAAAJAAYAAAABAAQAAAAJAAcAAAABAAQAAAAJAAgAAAABAAQAAAAJAAkAAAABAAQAAAAJAAoAAAABAAQAAAAJAAsAAAABAAQAAAAJAAwAAAABAAQAAAAJAA0AAAABAAQAAAAKAAAAAAABAAQAAAAKAAEAAAABAAQAAAAKAAIAAAABAAQAAAAKAAMAAAABAAQAAAAKAAQAAAABAAQAAAAKAAUAAAABAAQAAAAKAAYAAAABAAQAAAAKAAcAAAABAAQAAAAKAAgAAAABAAQAAAAKAAkAAAABAAQAAAAKAAoAAAABAAQAAAAKAAsAAAABAAQAAAAKAAwAAAABAAQAAAAKAA0AAAABAAQAAAALAAAAAAABAAQAAAALAAEAAAABAAQAAAALAAIAAAABAAQAAAALAAMAAAABAAQAAAALAAQAAAABAAQAAAALAAUAAAABAAQAAAALAAYAAAABAAQAAAALAAcAAAABAAQAAAALAAgAAAABAAQAAAALAAkAAAABAAQAAAALAAoAAAABAAQAAAALAAsAAAABAAQAAAALAAwAAAABAAQAAAALAA0AAAABAAQAAAAMAAAAAAABAAQAAAAMAAEAAAABAAQAAAAMAAIAAAABAAQAAAAMAAMAAAABAAQAAAAMAAQAAAABAAQAAAAMAAUAAAABAAQAAAAMAAYAAAABAAQAAAAMAAcAAAABAAQAAAAMAAgAAAABAAQAAAAMAAkAAAABAAQAAAAMAAoAAAABAAQAAAAMAAsAAAABAAQAAAAMAAwAAAABAAQAAAAMAA0AAAABAAQAAAANAAAAAAABAAQAAAANAAEAAAABAAQAAAANAAIAAAABAAQAAAANAAMAAAABAAQAAAANAAQAAAABAAQAAAANAAUAAAABAAQAAAANAAYAAAABAAQAAAANAAcAAAABAAQAAAANAAgAAAABAAQAAAANAAkAAAABAAQAAAANAAoAAAABAAQAAAANAAsAAAABAAQAAAANAAwAAAABAAQAAAANAA0AAAABAAQAAAAOAAAAAAABAAQAAAAOAAEAAAABAAQAAAAOAAIAAAABAAQAAAAOAAMAAAABAAQAAAAOAAQAAAABAAQAAAAOAAUAAAABAAQAAAAOAAYAAAABAAQAAAAOAAcAAAABAAQAAAAOAAgAAAABAAQAAAAOAAkAAAABAAQAAAAOAAoAAAABAAQAAAAOAAsAAAABAAQAAAAOAAwAAAABAAQAAAAOAA0AAAABAAQAAAAPAAAAAAABAAQAAAAPAAEAAAABAAQAAAAPAAIAAAABAAQAAAAPAAMAAAABAAQAAAAPAAQAAAABAAQAAAAPAAUAAAABAAQAAAAPAAYAAAABAAQAAAAPAAcAAAABAAQAAAAPAAgAAAABAAQAAAAPAAkAAAABAAQAAAAPAAoAAAABAAQAAAAPAAsAAAABAAQAAAAPAAwAAAABAAQAAAAPAA0AAAABAAQAAAAQAAAAAAABAAQAAAAQAAEAAAABAAQAAAAQAAIAAAABAAQAAAAQAAMAAAABAAQAAAAQAAQAAAABAAQAAAAQAAUAAAABAAQAAAAQAAYAAAABAAQAAAAQAAcAAAABAAQAAAAQAAgAAAABAAQAAAAQAAkAAAABAAQAAAAQAAoAAAABAAQAAAAQAAsAAAABAAQAAAAQAAwAAAABAAQAAAAQAA0AAAABAAQAAAARAAAAAAABAAQAAAARAAEAAAABAAQAAAARAAIAAAABAAQAAAARAAMAAAABAAQAAAARAAQAAAABAAQAAAARAAUAAAABAAQAAAARAAYAAAABAAQAAAARAAcAAAABAAQAAAARAAgAAAABAAQAAAARAAkAAAABAAQAAAARAAoAAAABAAQAAAARAAsAAAABAAQAAAARAAwAAAABAAQAAAARAA0AAAABAAQAAAASAAAAAAABAAQAAAASAAEAAAABAAQAAAASAAIAAAABAAQAAAASAAMAAAABAAQAAAASAAQAAAABAAQAAAASAAUAAAABAAQAAAASAAYAAAABAAQAAAASAAcAAAABAAQAAAASAAgAAAABAAQAAAASAAkAAAABAAQAAAASAAoAAAABAAQAAAASAAsAAAABAAQAAAASAAwAAAABAAQAAAASAA0AAAABAAQAAAATAAAAAAABAAQAAAATAAEAAAABAAQAAAATAAIAAAABAAQAAAATAAMAAAABAAQAAAATAAQAAAABAAQAAAATAAUAAAABAAQAAAATAAYAAAABAAQAAAATAAcAAAABAAQAAAATAAgAAAABAAQAAAATAAkAAAABAAQAAAATAAoAAAABAAQAAAATAAsAAAABAAQAAAATAAwAAAABAAQAAAATAA0AAAABAAQAAAAUAAAAAAABAAQAAAAUAAEAAAABAAQAAAAUAAIAAAABAAQAAAAUAAMAAAABAAQAAAAUAAQAAAABAAQAAAAUAAUAAAABAAQAAAAUAAYAAAABAAQAAAAUAAcAAAABAAQAAAAUAAgAAAABAAQAAAAUAAkAAAABAAQAAAAUAAoAAAABAAQAAAAUAAsAAAABAAQAAAAUAAwAAAABAAQAAAAUAA0AAAABAAQAAAAVAAAAAAABAAQAAAAVAAEAAAABAAQAAAAVAAIAAAABAAQAAAAVAAMAAAABAAQAAAAVAAQAAAABAAQAAAAVAAUAAAABAAQAAAAVAAYAAAABAAQAAAAVAAcAAAABAAQAAAAVAAgAAAABAAQAAAAVAAkAAAABAAQAAAAVAAoAAAABAAQAAAAVAAsAAAABAAQAAAAVAAwAAAABAAQAAAAVAA0AAAABAAQAAAAWAAAAAAABAAQAAAAWAAEAAAABAAQAAAAWAAIAAAABAAQAAAAWAAMAAAABAAQAAAAWAAQAAAABAAQAAAAWAAUAAAABAAQAAAAWAAYAAAABAAQAAAAWAAcAAAABAAQAAAAWAAgAAAABAAQAAAAWAAkAAAABAAQAAAAWAAoAAAABAAQAAAAWAAsAAAABAAQAAAAWAAwAAAABAAQAAAAWAA0AAAABAAQAAAAXAAAAAAABAAQAAAAXAAEAAAABAAQAAAAXAAIAAAABAAQAAAAXAAMAAAABAAQAAAAXAAQAAAABAAQAAAAXAAUAAAABAAQAAAAXAAYAAAABAAQAAAAXAAcAAAABAAQAAAAXAAgAAAABAAQAAAAXAAkAAAABAAQAAAAXAAoAAAABAAQAAAAXAAsAAAABAAQAAAAXAAwAAAABAAQAAAAXAA0AAAABAAQAAAAYAAAAAAABAAQAAAAYAAEAAAABAAQAAAAYAAIAAAABAAQAAAAYAAMAAAABAAQAAAAYAAQAAAABAAQAAAAYAAUAAAABAAQAAAAYAAYAAAABAAQAAAAYAAcAAAABAAQAAAAYAAgAAAABAAQAAAAYAAkAAAABAAQAAAAYAAoAAAABAAQAAAAYAAsAAAABAAQAAAAYAAwAAAABAAQAAAAYAA0AAAABAAQAAAA=")
 tile_set = SubResource("TileSet_knkrb")
+y_sort_origin = -1
 
 [node name="RacingTiles" type="TileMapLayer" parent="." unique_id=1493071857]
 visible = false
@@ -67,21 +124,23 @@ texture = ExtResource("1_wwogq")
 region_enabled = true
 region_rect = Rect2(7, 7, 114, 41)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1013300196]
+[node name="Track" type="Node2D" parent="." unique_id=1002522882]
+
+[node name="Sprite2D" type="Sprite2D" parent="Track" unique_id=1013300196]
 position = Vector2(546.9999, 169.00003)
 scale = Vector2(19.12, 6.76)
 texture = ExtResource("1_7rcc2")
 region_enabled = true
 region_rect = Rect2(0, 64, 32, 32)
 
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=261650672]
+[node name="Sprite2D2" type="Sprite2D" parent="Track" unique_id=261650672]
 position = Vector2(566.9999, 516)
 scale = Vector2(19.12, 6.76)
 texture = ExtResource("1_7rcc2")
 region_enabled = true
 region_rect = Rect2(0, 64, 32, 32)
 
-[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=1067634451]
+[node name="Sprite2D4" type="Sprite2D" parent="Track" unique_id=1067634451]
 position = Vector2(963.99994, 369)
 rotation = 1.5707964
 scale = Vector2(5.6400023, 6.76)
@@ -89,7 +148,7 @@ texture = ExtResource("1_7rcc2")
 region_enabled = true
 region_rect = Rect2(0, 64, 32, 32)
 
-[node name="Sprite2D6" type="Sprite2D" parent="." unique_id=1990393578]
+[node name="Sprite2D6" type="Sprite2D" parent="Track" unique_id=1990393578]
 position = Vector2(170.99994, 369)
 rotation = 1.5707964
 scale = Vector2(5.6400023, 6.76)
@@ -97,14 +156,14 @@ texture = ExtResource("1_7rcc2")
 region_enabled = true
 region_rect = Rect2(0, 64, 32, 32)
 
-[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1785929424]
+[node name="Sprite2D3" type="Sprite2D" parent="Track" unique_id=1785929424]
 position = Vector2(964.9998, 170.00002)
 scale = Vector2(7, 7)
 texture = ExtResource("1_7rcc2")
 region_enabled = true
 region_rect = Rect2(32, 64, 32, 32)
 
-[node name="Sprite2D7" type="Sprite2D" parent="." unique_id=2043207998]
+[node name="Sprite2D7" type="Sprite2D" parent="Track" unique_id=2043207998]
 position = Vector2(158, 170.00002)
 rotation = -1.5707964
 scale = Vector2(7, 7)
@@ -112,18 +171,373 @@ texture = ExtResource("1_7rcc2")
 region_enabled = true
 region_rect = Rect2(32, 64, 32, 32)
 
-[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=1452981730]
+[node name="Sprite2D5" type="Sprite2D" parent="Track" unique_id=1452981730]
 position = Vector2(164.99988, 520)
-rotation = 3.1415927
+rotation = -3.1415925
 scale = Vector2(7, 7)
 texture = ExtResource("1_7rcc2")
 region_enabled = true
 region_rect = Rect2(32, 64, 32, 32)
 
-[node name="Sprite2D8" type="Sprite2D" parent="." unique_id=333297884]
+[node name="Sprite2D8" type="Sprite2D" parent="Track" unique_id=333297884]
 position = Vector2(970.9998, 520)
 rotation = 1.5707964
 scale = Vector2(7, 7)
 texture = ExtResource("1_7rcc2")
 region_enabled = true
 region_rect = Rect2(32, 64, 32, 32)
+
+[node name="Fans" type="Node2D" parent="." unique_id=1910615494]
+
+[node name="Fan" type="Sprite2D" parent="Fans" unique_id=582953210]
+position = Vector2(314.99997, -10.999999)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(3, 50, 3, 3)
+
+[node name="Fan2" type="Sprite2D" parent="Fans" unique_id=643011122]
+position = Vector2(351, 28.999996)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(3, 50, 3, 3)
+
+[node name="Fan3" type="Sprite2D" parent="Fans" unique_id=1946334197]
+position = Vector2(410.00003, 15.000001)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(3, 50, 3, 3)
+
+[node name="Fan4" type="Sprite2D" parent="Fans" unique_id=912545247]
+position = Vector2(431, -29.999996)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(3, 50, 3, 3)
+
+[node name="Fan5" type="Sprite2D" parent="Fans" unique_id=805592476]
+position = Vector2(461.00003, -48)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(3, 50, 3, 3)
+
+[node name="Fan6" type="Sprite2D" parent="Fans" unique_id=691366394]
+position = Vector2(496, -16.000002)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(3, 50, 3, 3)
+
+[node name="Fan7" type="Sprite2D" parent="Fans" unique_id=696449510]
+position = Vector2(504.00003, 20.999994)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(3, 50, 3, 3)
+
+[node name="Fan8" type="Sprite2D" parent="Fans" unique_id=1703132030]
+position = Vector2(537, 61)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(3, 50, 3, 3)
+
+[node name="Fan9" type="Sprite2D" parent="Fans" unique_id=1151846190]
+position = Vector2(582.00006, 53.999996)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(3, 50, 3, 3)
+
+[node name="Fan10" type="Sprite2D" parent="Fans" unique_id=2647700]
+position = Vector2(634, 54)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(3, 50, 3, 3)
+
+[node name="Fan11" type="Sprite2D" parent="Fans" unique_id=80826233]
+position = Vector2(667.00006, 58)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(3, 50, 3, 3)
+
+[node name="Fan12" type="Sprite2D" parent="Fans" unique_id=515171320]
+position = Vector2(707.00006, 58)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(3, 50, 3, 3)
+
+[node name="Fan13" type="Sprite2D" parent="Fans" unique_id=102220503]
+position = Vector2(755.00006, 59)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(3, 50, 3, 3)
+
+[node name="Fan14" type="Sprite2D" parent="Fans" unique_id=892099166]
+position = Vector2(769, 38)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(3, 50, 3, 3)
+
+[node name="Fan15" type="Sprite2D" parent="Fans" unique_id=93590130]
+position = Vector2(793, 29)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(3, 50, 3, 3)
+
+[node name="Fan16" type="Sprite2D" parent="Fans" unique_id=1947662712]
+position = Vector2(813, 5.000002)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(3, 50, 3, 3)
+
+[node name="Fan17" type="Sprite2D" parent="Fans" unique_id=7674237]
+position = Vector2(806, -17.999998)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(3, 50, 3, 3)
+
+[node name="Fan18" type="Sprite2D" parent="Fans" unique_id=1857311155]
+position = Vector2(786.00006, -40)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(3, 50, 3, 3)
+
+[node name="Fan19" type="Sprite2D" parent="Fans" unique_id=1844413580]
+position = Vector2(766, -45)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(3, 50, 3, 3)
+
+[node name="Fan20" type="Sprite2D" parent="Fans" unique_id=1322354750]
+position = Vector2(766, -45)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(3, 50, 3, 3)
+
+[node name="Fan21" type="Sprite2D" parent="Fans" unique_id=1529066862]
+position = Vector2(710.00006, -45)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan22" type="Sprite2D" parent="Fans" unique_id=839816210]
+position = Vector2(715, -12.000004)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan23" type="Sprite2D" parent="Fans" unique_id=1761269262]
+position = Vector2(691, -10)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan24" type="Sprite2D" parent="Fans" unique_id=1037330942]
+position = Vector2(682.00006, 21.999998)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan25" type="Sprite2D" parent="Fans" unique_id=598483410]
+position = Vector2(638.00006, 20)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan26" type="Sprite2D" parent="Fans" unique_id=1076261062]
+position = Vector2(605, 21)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan27" type="Sprite2D" parent="Fans" unique_id=1467157478]
+position = Vector2(574, 20.000002)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan28" type="Sprite2D" parent="Fans" unique_id=298040747]
+position = Vector2(549.00006, -6.999998)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan29" type="Sprite2D" parent="Fans" unique_id=1318821986]
+position = Vector2(542, -37)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan30" type="Sprite2D" parent="Fans" unique_id=1521095557]
+position = Vector2(514.00006, -62)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan31" type="Sprite2D" parent="Fans" unique_id=1844919405]
+position = Vector2(496, -62.000004)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan32" type="Sprite2D" parent="Fans" unique_id=770388586]
+position = Vector2(506.00003, -36)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan33" type="Sprite2D" parent="Fans" unique_id=751013612]
+position = Vector2(567, -32.000004)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan34" type="Sprite2D" parent="Fans" unique_id=747233480]
+position = Vector2(598.00006, -25.000004)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan35" type="Sprite2D" parent="Fans" unique_id=1541925294]
+position = Vector2(631, -14.000001)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan36" type="Sprite2D" parent="Fans" unique_id=1544507482]
+position = Vector2(635, -34)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan37" type="Sprite2D" parent="Fans" unique_id=1987783294]
+position = Vector2(638, -61)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan38" type="Sprite2D" parent="Fans" unique_id=1612313485]
+position = Vector2(664, -60.999996)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan39" type="Sprite2D" parent="Fans" unique_id=1126028112]
+position = Vector2(666, -35)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan40" type="Sprite2D" parent="Fans" unique_id=614074270]
+position = Vector2(477.00006, 69.99999)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan41" type="Sprite2D" parent="Fans" unique_id=1363594699]
+position = Vector2(410.00003, 62.000008)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan42" type="Sprite2D" parent="Fans" unique_id=1895314293]
+position = Vector2(364, -24.999992)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan43" type="Sprite2D" parent="Fans" unique_id=768297295]
+position = Vector2(405, -57.999996)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan44" type="Sprite2D" parent="Fans" unique_id=1786516471]
+position = Vector2(405, -57.999996)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan45" type="Sprite2D" parent="Fans" unique_id=1179285623]
+position = Vector2(288, -52)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan46" type="Sprite2D" parent="Fans" unique_id=675217780]
+position = Vector2(302.00003, 24.999992)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan47" type="Sprite2D" parent="Fans" unique_id=1041720834]
+position = Vector2(301, 61.999996)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="Fan48" type="Sprite2D" parent="Fans" unique_id=120640581]
+position = Vector2(301, 61.999996)
+scale = Vector2(5, 5)
+texture = ExtResource("1_wwogq")
+region_enabled = true
+region_rect = Rect2(18, 51, 3, 3)
+
+[node name="PlayerRacingLine" type="Path2D" parent="." unique_id=1785393006]
+curve = SubResource("Curve2D_cb3yj")
+
+[node name="Car" parent="PlayerRacingLine" unique_id=1356705940 node_paths=PackedStringArray("racing_line") instance=ExtResource("4_lyb4g")]
+position = Vector2(191, 204)
+rotation = -0.018540923
+racing_line = NodePath("..")
+
+[node name="EnemyRacingLine" type="Path2D" parent="." unique_id=1385055931]
+curve = SubResource("Curve2D_lyb4g")
+
+[node name="Car" parent="EnemyRacingLine" unique_id=1742496555 node_paths=PackedStringArray("racing_line") instance=ExtResource("4_lyb4g")]
+position = Vector2(137, 138)
+rotation = 0.0047280975
+racing_line = NodePath("..")
+type = 1

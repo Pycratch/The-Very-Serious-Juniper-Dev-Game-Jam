@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://boamnbvsnftre"]
+
+[ext_resource type="Script" uid="uid://3v3vebyyx8w2" path="res://Racing/car.gd" id="1_w2lar"]
+[ext_resource type="Texture2D" uid="uid://cx3fcq6yqr1vw" path="res://assets/Yaya_assets/cars-tracks.png" id="2_gnf3h"]
+
+[node name="Car" type="PathFollow2D" unique_id=1356705940]
+script = ExtResource("1_w2lar")
+
+[node name="Texture" type="Sprite2D" parent="." unique_id=2127652564]
+rotation = 1.5707964
+scale = Vector2(3, 3)
+texture = ExtResource("2_gnf3h")
+region_enabled = true
+region_rect = Rect2(6, 34, 21, 30)
