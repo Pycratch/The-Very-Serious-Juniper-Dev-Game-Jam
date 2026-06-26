@@ -19,6 +19,12 @@ var rng = RandomNumberGenerator.new()
 var final_prize :String
 var prize_list :Array
 
+var common_weight : float = 60.0
+var rare_weight : float = 25.0
+var epic_weight : float = 15
+var mythic_weight : float = 7.5
+var legendary_weight : float = 2.5
+
 #the types for all the stuff
 
 
@@ -37,7 +43,6 @@ var prizes : Dictionary = {
 	"Differential": differential,
 	"Fuel_System": fuel_system,
 	"Weight_Reduction": weight_reduction
-
 }
 
 var engine : Array = [
@@ -208,7 +213,7 @@ func randomize_type():
 var rarity_string :String
 func randomize_rarity():
 	#randomize rarity weighted
-	rarity = Rarities.values()[rng.rand_weighted([20.0, 10.0, 6, 3.0, 1.0])]
+	rarity = Rarities.values()[rng.rand_weighted([common_weight, rare_weight, epic_weight, mythic_weight, legendary_weight])]
 	#prints out the rarity as a string
 	#print(Rarities.keys()[rarity])
 	rarity_string = Rarities.keys()[rarity]
