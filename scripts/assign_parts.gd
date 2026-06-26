@@ -1,61 +1,70 @@
 extends Control
 
+@onready var CategoryButton = $MarginContainer/VBoxContainer/HBoxContainer/CategoryButton
+@onready var PartsButton = $MarginContainer/VBoxContainer/HBoxContainer/PartsButton
 @export var added_power : float
 var assigned_parts : Array = []
 var current_owned_parts : Array[ItemPart] = []
 var equipped_parts : Dictionary = {}
 
-@onready var dropdown_options : Dictionary = {
-	ItemPart.Types.Engine: $MarginContainer/VBoxContainer/EngineContainer/Engine,
-	ItemPart.Types.Tires: $MarginContainer/VBoxContainer/TiresContainer/Tires
-}
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	EventBus.inventory_updated.connect(refresh_inventory)
 	$MarginContainer/POWER.text = "Power: " + str(added_power)
-	for type in dropdown_options:
-		var dropdown = dropdown_options[type]
-		dropdown.item_selected.connect(on_part_selected.bind(type))
+	
+	CategoryButton.item_selected.connect(_on_category_button_item_selected)
+	PartsButton.item_selected.connect(_on_parts_button_item_selected)
+	CategoryButton.clear()
+	for category_name in ItemPart.Types.keys():
+		CategoryButton.add_item(category_name)
+	refresh_inventory()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	var owned_items : Array = get_parent().given_items
-	if Input.is_action_just_pressed("Test1"):
-		clear_options()
-		add_parts(owned_items)
-		owned_items.clear()
-
-func clear_options():
+func refresh_inventory():
 	current_owned_parts.clear()
-	for dropdown in dropdown_options.values():
-		dropdown.clear()
+	PartsButton.clear()
 	
+	for item in Collection.Items:
+		current_owned_parts.append(item)
 	
+	var current_idx = CategoryButton.selected
+	if current_idx != -1:
+		_on_category_button_item_selected(current_idx)
+		
 func add_parts(owned_items):
 	for item in owned_items:
-		if dropdown_options.has(item.type):
-			var selected_dropdown = dropdown_options[item.type]
-			selected_dropdown.add_item(item.Name)
-			
-			var i = selected_dropdown.get_item_count() - 1
-			selected_dropdown.set_item_metadata(i, item)
-			
-			current_owned_parts.append(item)
-	
-func on_part_selected(index: int, part_type) -> void:
-	var dropdown = dropdown_options[part_type]
-	var selected_part = dropdown.get_item_metadata(index) as ItemPart
-	
-	if selected_part:
-		equipped_parts[part_type] = selected_part
-		
-		power_calculation()
-		
+		current_owned_parts.append(item)
 		
 func power_calculation():
 	added_power = 0
 	
 	for type in equipped_parts:
 		var part = equipped_parts[type]
-		added_power = part.power
+		added_power += part.power
 	
+	GameStats.Power = added_power
 	$MarginContainer/POWER.text = "Power: " + str(added_power)
+
+
+func _on_category_button_item_selected(index: int) -> void:
+	var selected_category = CategoryButton.get_item_text(index)
+	PartsButton.clear()
+	
+	if not ItemPart.Types.has(selected_category):
+		return
+			
+	var target_type_enum = ItemPart.Types[selected_category]
+	
+	for item in current_owned_parts:
+		if item.type == target_type_enum:
+			PartsButton.add_item(item.Name)
+			var i = PartsButton.get_item_count() - 1
+			PartsButton.set_item_metadata(i, item)
+
+
+func _on_parts_button_item_selected(index: int) -> void:
+	var selected_part = PartsButton.get_item_metadata(index) as ItemPart
+	
+	if selected_part:
+		equipped_parts[selected_part.type] = selected_part
+	
+	power_calculation()

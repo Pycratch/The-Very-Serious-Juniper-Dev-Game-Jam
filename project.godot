@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Collection="*uid://cark8jecq6hob"
 ItemScript="*uid://sg7t00nf3ws6"
 GameStats="*uid://dkgoff1g27tdl"
+EventBus="*uid://bwbgye2agpcws"
 
 [display]
 

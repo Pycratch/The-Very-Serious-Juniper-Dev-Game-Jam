@@ -1,10 +1,5 @@
-extends Node2D
-
-@export var Money : float = 5000.0
-@export var Items : int
-@export var Power : float 
-
-var can_sell :bool = false
+extends Node
+signal inventory_updated
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,5 +8,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("!!TEMP!!ADDMONEY"):
-		Money += 10.0
+	pass
