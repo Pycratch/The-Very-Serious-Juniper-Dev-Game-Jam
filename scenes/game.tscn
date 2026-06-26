@@ -46,13 +46,13 @@ position = Vector2(576, 324)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=332696621]
 
 [node name="GameUI" parent="CanvasLayer" unique_id=1611855527 node_paths=PackedStringArray("InventoryUI") instance=ExtResource("22_bt5mj")]
-visible = false
 InventoryUI = NodePath("../CollectionUI")
 
 [node name="MainMenuUI" parent="CanvasLayer" unique_id=69001883 instance=ExtResource("23_e1j6l")]
 visible = false
 
 [node name="WheelspinUI" type="Control" parent="CanvasLayer" unique_id=1289705449]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,27 +79,6 @@ collide_with_areas = true
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/WheelspinUI/Pointer" unique_id=1578688176]
 position = Vector2(0, 30)
 texture = ExtResource("21_37s47")
-
-[node name="FinalPrizeLabel" type="Label" parent="CanvasLayer/WheelspinUI" unique_id=364253238]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 200)
-custom_maximum_size = Vector2(150, 200)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -269.0
-offset_top = -246.0
-offset_right = -119.0
-offset_bottom = -46.0
-grow_horizontal = 0
-grow_vertical = 0
-size_flags_horizontal = 0
-size_flags_vertical = 8
-theme_override_font_sizes/font_size = 30
-text = "Final Prize: XY"
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/WheelspinUI" unique_id=1736855296]
 layout_mode = 1
@@ -172,7 +151,6 @@ texture_pressed = ExtResource("20_e1j6l")
 stretch_mode = 0
 
 [node name="Right" type="VBoxContainer" parent="CanvasLayer/WheelspinUI/MarginContainer" unique_id=293025709]
-custom_minimum_size = Vector2(0, 600)
 layout_mode = 2
 size_flags_horizontal = 8
 
