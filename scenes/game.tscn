@@ -47,7 +47,6 @@ visible = false
 InventoryUI = NodePath("../CollectionUI")
 
 [node name="MainMenuUI" parent="CanvasLayer" unique_id=69001883 instance=ExtResource("23_e1j6l")]
-visible = false
 
 [node name="WheelspinUI" type="Control" parent="CanvasLayer" unique_id=1289705449]
 visible = false
@@ -186,6 +185,7 @@ text = "Money :
 visible = false
 
 [node name="CollectionUI" parent="CanvasLayer" unique_id=955670684 node_paths=PackedStringArray("game_ui") instance=ExtResource("22_e1j6l")]
+visible = false
 game_ui = NodePath("../GameUI")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="." unique_id=2060442080]

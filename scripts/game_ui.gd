@@ -4,6 +4,7 @@ extends Control
 @onready var SellUI = get_parent().get_node("SellUI")
 @export var InventoryUI :Control
 @onready var MoneyLabel = %MoneyLabel
+@onready var MainMenuUI = get_parent().get_node("MainMenuUI")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,3 +33,7 @@ func set_money():
 func _on_inventory_pressed():
 	if InventoryUI:
 		toggle_visibility(InventoryUI)
+
+
+func _on_leave_pressed() -> void:
+	toggle_visibility(MainMenuUI)

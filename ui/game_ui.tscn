@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://doehc5bwu63o2" path="res://assets/Buttons/RaceButtonHovered.png" id="14_igvt4"]
 [ext_resource type="Texture2D" uid="uid://dovr2hp62erpv" path="res://assets/Buttons/InventoryButton.png" id="17_x8pta"]
 [ext_resource type="Texture2D" uid="uid://diqp1khccr5vn" path="res://assets/Buttons/InventoryButtonHovered.png" id="18_2rmtt"]
+[ext_resource type="Texture2D" uid="uid://d2xqfixleadm" path="res://assets/Buttons/LeaveButton.png" id="19_r57mm"]
+[ext_resource type="Texture2D" uid="uid://bbqkaypdueen2" path="res://assets/Buttons/LeaveButtonHovered.png" id="20_5y11b"]
 
 [sub_resource type="Gradient" id="Gradient_sjwyb"]
 offsets = PackedFloat32Array(0, 0.40963855)
@@ -49,6 +51,12 @@ texture = ExtResource("17_x8pta")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_igvt4"]
 texture = ExtResource("18_2rmtt")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_37s47"]
+texture = ExtResource("19_r57mm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bt5mj"]
+texture = ExtResource("20_5y11b")
 
 [node name="GameUI" type="Control" unique_id=1611855527]
 layout_mode = 3
@@ -182,6 +190,25 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 30
 
+[node name="LEAVE" type="Button" parent="." unique_id=997118305]
+custom_minimum_size = Vector2(125, 62.5)
+custom_maximum_size = Vector2(125, 62.5)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -125.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_37s47")
+theme_override_styles/hover = SubResource("StyleBoxTexture_bt5mj")
+
 [connection signal="pressed" from="MarginContainer/ButtonContainer/WHEELSPIN" to="." method="_on_wheelspin_pressed"]
 [connection signal="pressed" from="MarginContainer/ButtonContainer/SELL" to="." method="_on_sell_pressed"]
 [connection signal="pressed" from="MarginContainer/ButtonContainer/INVENTORY" to="." method="_on_inventory_pressed"]
+[connection signal="pressed" from="LEAVE" to="." method="_on_leave_pressed"]

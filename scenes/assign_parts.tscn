@@ -29,7 +29,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=624612897]
 layout_mode = 2
-text = "Type                                               Parts"
+text = "Category                                                                              Parts"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1702122234]
 custom_maximum_size = Vector2(500, -1)
@@ -43,7 +43,7 @@ size_flags_vertical = 4
 
 [node name="PartsButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=832640477]
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 4
 size_flags_vertical = 0
 
 [node name="POWER" type="Label" parent="MarginContainer" unique_id=2121581047]
