@@ -4,6 +4,7 @@ extends Sprite2D
 @onready var WinSound = get_parent().get_node("WinSound")
 @onready var SpinSound = get_parent().get_node("SpinSound")
 @onready var parent = get_parent()
+@onready var FinalPrize = %FinalPrizeLabel
 
 @export var engine_icon : Texture2D
 @export var tires_icon : Texture2D
@@ -20,6 +21,7 @@ extends Sprite2D
 @export var weight_reduction_icon : Texture2D
 @export var differential_icon : Texture2D
 
+var endItem : ItemPart
 var final_prize : String
 var spin_timer : float = 2.5
 var price : float = 30.0
@@ -198,17 +200,15 @@ var cooling_system : Array = [
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
-	
-var endItem :ItemPart
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if parent.visible == false:
 		return
 	
-	reset_weight()
-	set_wheelspin_color()
-	if Input.is_action_just_pressed("spin") and GameStats.Money >= price:
+	#reset_weight()
+	#set_wheelspin_color()
+	if Input.is_action_just_pressed("spin") and GameStats.Money >= price and parent.visible:
 		#create new end item?
 		endItem = ItemPart.new()
 		endItem.rodeo()
@@ -242,67 +242,56 @@ func roll_prize(prize, rarity):
 	if prize_list:
 		final_prize = endItem.final_prize
 		give_rarity(final_prize, rarity)
-		print(rarities)
 		reset_weight()
-		#get_parent().untoggle_all()
 		
 func give_rarity(prize, finalrarity):
 	if finalrarity != "":
 		print(finalrarity + " " + prize)
+		FinalPrize.text = "Prize: \n" + finalrarity + " \n" + prize
 		endItem.set_rarity(finalrarity)
 		return finalrarity
-	
-	var first_rolled_rarity : float
-	var total_weight : int = 0
-	for rarity in rarities:
-		total_weight += rarity["weight"]
 	
 	endItem.randomize_rarity()
 	
 	finalrarity = endItem.rarity_string
 	endItem.set_rarity(finalrarity)
 	return finalrarity
-	
-	#var roll = randf_range(0, total_weight)
-	#for rarity in rarities: #Hier wird die Rarity gerollt
-	#	first_rolled_rarity += rarity["weight"]
-	#	if roll < first_rolled_rarity:
-	#		return rarity["name"]
 			
 	print("fallback")
 	
 func setup_prizes(child):
-	child.prize_type = endItem.prizes.keys().pick_random()#prizes.keys().pick_random()
+	child.prize_type = endItem.prizes.keys().pick_random()
+	child.temp_prize_type = prizes.keys().pick_random()
 	#print(child.prize_type)
 
 
 func set_wheelspin_color():
 	if current_wheelspin_rarity == "Common":
 		self.self_modulate = COLOR_TINT.get("Common", Color(1,1,1))
-		rarities[0]["weight"] = 50.0
+		endItem.common_weight = 50.0
 		
 	elif current_wheelspin_rarity == "Rare":
 		self.self_modulate = COLOR_TINT.get("Rare", Color(1,1,1)) 
-		rarities[1]["weight"] = 50.0
+		endItem.rare_weight = 50.0
 		
 	elif current_wheelspin_rarity == "Epic":
 		self.self_modulate = COLOR_TINT.get("Epic", Color(1,1,1)) 
-		rarities[2]["weight"] = 50.0
+		endItem.epic_weight = 50.0
 		
 	elif current_wheelspin_rarity == "Mythic":
 		self.self_modulate = COLOR_TINT.get("Mythic", Color(1,1,1)) 
-		rarities[3]["weight"] = 50.0
+		endItem.mythic_weight = 50.0
 	
 	elif current_wheelspin_rarity == "Legendary":
 		self.self_modulate = COLOR_TINT.get("Legendary", Color(1,1,1))
-		rarities[4]["weight"] = 50.0
+		endItem.legendary_weight = 50.0
 		
 func reset_weight():
-	rarities[0]["weight"] = 50.0
-	rarities[1]["weight"] = 25.0
-	rarities[2]["weight"] = 15.0
-	rarities[3]["weight"] = 7.5
-	rarities[4]["weight"] = 2.5
+	endItem.common_weight = 50.0
+	endItem.rare_weight = 25.0
+	endItem.epic_weight = 15.0
+	endItem.mythic_weight = 7.5
+	endItem.legendary_weight = 2.5
 
 func _on_common_toggled(toggled_on: bool) -> void:
 	if toggled_on == true:
@@ -321,12 +310,10 @@ func _on_epic_toggled(toggled_on: bool) -> void:
 
 func _on_mythic_toggled(toggled_on: bool) -> void:
 	if toggled_on == true:
-		print("Mythic")
 		price = 500.0
 		current_wheelspin_rarity = "Mythic"
 
 func _on_legendary_toggled(toggled_on: bool) -> void:
 	if toggled_on == true:
-		print("Legendary")
 		price = 1500.0
 		current_wheelspin_rarity = "Legendary"
