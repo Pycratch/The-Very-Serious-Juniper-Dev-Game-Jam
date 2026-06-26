@@ -33,7 +33,6 @@ func delete_slots():
 	grid_container.get_child(grid_container.get_child_count() - 1).queue_free() #deletes the last slot
 
 func set_properties():
-	given_items.clear()
 	var slots = []
 	#put in grid children into an array
 	for i in grid_container.get_children():

@@ -11,7 +11,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var money = GameStats.Money
-	MoneyLabel.text = "Money: \n" + str(money)
+	MoneyLabel.text = "Money: " + str(money)
 
 func _on_button_pressed() -> void:
 	toggle_visibility(GameUI)
