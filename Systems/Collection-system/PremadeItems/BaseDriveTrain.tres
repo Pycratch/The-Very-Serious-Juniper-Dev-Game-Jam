@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemPart" format=3 uid="uid://ceq1ekyl05tr4"]
+
+[ext_resource type="Texture2D" uid="uid://biwsi14ifb6wf" path="res://assets/Prizes/Icons/DrivetrainIcon.png" id="1_v10d1"]
+[ext_resource type="Script" uid="uid://sg7t00nf3ws6" path="res://Systems/Collection-system/scripts/item_script.gd" id="2_2ck6e"]
+
+[resource]
+script = ExtResource("2_2ck6e")
+Name = "Common Drivetrain"
+type = 11
+power = 25.0
+picture = ExtResource("1_v10d1")
+metadata/_custom_type_script = "uid://sg7t00nf3ws6"

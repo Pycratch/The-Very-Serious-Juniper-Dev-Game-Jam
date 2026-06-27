@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://bebs22ybec0ga"]
+
+[ext_resource type="Script" uid="uid://bqwe00obhp68w" path="res://scripts/assign_parts.gd" id="1_yi6bh"]
+
+[node name="AssignParts" type="Control" unique_id=939137576]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yi6bh")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=606410335]
+custom_minimum_size = Vector2(700, 0)
+custom_maximum_size = Vector2(700, -1)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -600.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_right = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=981203177]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=624612897]
+layout_mode = 2
+text = "Category                                                                              Parts"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1702122234]
+custom_maximum_size = Vector2(500, -1)
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="CategoryButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=457725050]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="PartsButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=832640477]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="POWER" type="Label" parent="MarginContainer" unique_id=2121581047]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "POWER"
+
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/CategoryButton" to="." method="_on_category_button_item_selected"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/PartsButton" to="." method="_on_parts_button_item_selected"]

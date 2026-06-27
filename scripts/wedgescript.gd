@@ -1,9 +1,7 @@
 extends Area2D
 
-
 var prize_type : String
 var rolled_rarity : String
-
 
 const COLOR_TINT = {
 	"Common" : Color(0.536, 0.562, 0.535, 1.0), 
@@ -33,11 +31,10 @@ func roll_rarity():
 	give_rarity_tint()
 	get_icon(prize_type)
 	prize_type = ""
-	
+
 	
 func get_icon(type):
 	var texture = get_parent().prizes_icons.get(type)
 	if type:
 		get_child(1).texture = texture
-		get_child(1).scale = Vector2(3, 3)
-	
+		get_child(1).scale = Vector2(3,3)

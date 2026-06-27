@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemPart" format=3 uid="uid://bu581cdqs3xfg"]
+
+[ext_resource type="Texture2D" uid="uid://1p1l7323qicd" path="res://assets/Prizes/Icons/ExhaustIcon.png" id="1_305w7"]
+[ext_resource type="Script" uid="uid://sg7t00nf3ws6" path="res://Systems/Collection-system/scripts/item_script.gd" id="2_bq5ia"]
+
+[resource]
+script = ExtResource("2_bq5ia")
+Name = "Common Exhaust"
+type = 2
+power = 25.0
+picture = ExtResource("1_305w7")
+metadata/_custom_type_script = "uid://sg7t00nf3ws6"

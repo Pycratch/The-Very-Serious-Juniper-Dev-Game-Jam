@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemPart" format=3 uid="uid://cm5yhnux3bs82"]
+
+[ext_resource type="Texture2D" uid="uid://m0wr5v8f6ti8" path="res://assets/Prizes/Icons/FuelSystemIcon.png" id="1_64cff"]
+[ext_resource type="Script" uid="uid://sg7t00nf3ws6" path="res://Systems/Collection-system/scripts/item_script.gd" id="2_cy4dv"]
+
+[resource]
+script = ExtResource("2_cy4dv")
+Name = "Common Fuel System"
+type = 9
+power = 25.0
+picture = ExtResource("1_64cff")
+metadata/_custom_type_script = "uid://sg7t00nf3ws6"

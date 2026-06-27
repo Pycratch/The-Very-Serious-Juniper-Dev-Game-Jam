@@ -4,6 +4,7 @@ extends Sprite2D
 @onready var WinSound = get_parent().get_node("WinSound")
 @onready var SpinSound = get_parent().get_node("SpinSound")
 @onready var parent = get_parent()
+@onready var FinalPrize = %FinalPrizeLabel
 
 @export var engine_icon : Texture2D
 @export var tires_icon : Texture2D
@@ -20,16 +21,28 @@ extends Sprite2D
 @export var weight_reduction_icon : Texture2D
 @export var differential_icon : Texture2D
 
+var endItem : ItemPart
 var final_prize : String
 var spin_timer : float = 2.5
+var price : float = 30.0
+var current_wheelspin_rarity : String = "Common"
+var can_spin = true
 
-var rarities = [
-	{"name": "Common", "weight": 50},
-	{"name": "Rare", "weight": 25},
-	{"name": "Epic", "weight": 15},
-	{"name": "Mythic", "weight": 7.5},
-	{"name": "Legendary", "weight": 2.5}
-]
+var current_weights = {
+	"Common": 50,
+	"Rare": 25,
+	"Epic": 15,
+	"Mythic": 7.5,
+	"Legendary": 2.5
+}
+
+const COLOR_TINT = {
+	"Common" : Color(0.221, 0.235, 0.219, 1.0), 
+	"Rare" : Color(0.0, 0.425, 0.095, 1.0),
+	"Epic": Color(0.384, 0.042, 0.564, 1.0),
+	"Mythic": Color(0.43, 0.0, 0.0, 1.0),
+	"Legendary": Color(0.442, 0.422, 0.011, 1.0)
+}
 
 @onready var prizes : Dictionary = {
 	"Engine": engine,
@@ -41,11 +54,12 @@ var rarities = [
 	"Suspension": suspension,
 	"Turbocharger": turbocharger,
 	"Supercharger": supercharger,
-	"Cooling System": cooling_system,
+	"Cooling_System": cooling_system,
 	"Drivetrain": drivetrain,
 	"Differential": differential,
-	"Fuel System": fuel_system,
-	"Weight Reduction": weight_reduction
+	"Fuel_System": fuel_system,
+	"Weight_Reduction": weight_reduction
+
 }
 
 @onready var prizes_icons : Dictionary = {
@@ -58,11 +72,11 @@ var rarities = [
 	"Suspension": suspension_icon,
 	"Turbocharger": turbocharger_icon,
 	"Supercharger": supercharger_icon,
-	"Cooling System": cooling_system_icon,
+	"Cooling_System": cooling_system_icon,
 	"Drivetrain": drivetrain_icon,
 	"Differential": differential_icon,
-	"Fuel System": fuel_system_icon,
-	"Weight Reduction": weight_reduction_icon
+	"Fuel_System": fuel_system_icon,
+	"Weight_Reduction": weight_reduction_icon
 }
 
 var engine : Array = [
@@ -93,7 +107,7 @@ var fuel_system : Array = [
 	"Performance Fuel Pump",
 	"Race Injectors",
 	"E85 Conversion",
-    "Race Fuel System"
+    "Race Fuel_System"
 ]
 
 var ignition : Array = [
@@ -173,8 +187,8 @@ var weight_reduction : Array = [
 	"Lightweight Battery",
 	"Carbon Hood",
 	"Carbon Panels",
-	"Full Weight Reduction",
-    "Race Weight Reduction"
+	"Full Weight_Reduction",
+    "Race Weight_Reduction"
 ]
 
 var cooling_system : Array = [
@@ -187,14 +201,28 @@ var cooling_system : Array = [
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if parent.visible == false:
 		return
 	
-	if Input.is_action_just_pressed("spin"):
+	if Input.is_action_just_pressed("spin") and GameStats.Money >= price and parent.visible and can_spin:
+		can_spin = false
+		#create new end item?
+		GameStats.Money -= price
+		endItem = ItemPart.new()
+		
+		endItem.common_weight = current_weights["Common"]
+		endItem.rare_weight = current_weights["Rare"]
+		endItem.epic_weight = current_weights["Epic"]
+		endItem.mythic_weight = current_weights["Mythic"]
+		endItem.legendary_weight = current_weights["Legendary"]
+		
+		endItem.rodeo()
+		
+		get_parent().disable_all()
+		
 		var easeOutQuadtween = create_tween()
 		easeOutQuadtween.set_trans(Tween.TRANS_CIRC)
 		easeOutQuadtween.set_ease(Tween.EASE_OUT)
@@ -206,39 +234,106 @@ func _process(delta: float) -> void:
 		easeOutQuadtween.tween_property(self, "global_rotation", randi() % 70 + 40, spin_timer)
 		SpinSound.play()
 		await get_tree().create_timer(spin_timer).timeout
-		
+		can_spin = true
+		get_parent().enable_all()
 		var body = Pointer.get_collider()
 		if body:
 			var prize = body.get_child(1).name
 			var rarity = body.rolled_rarity
+			#set endItem rarity
+			endItem.rarity = endItem.Rarities.values()[endItem.Rarities.keys().find(rarity)]
 			roll_prize(prize, rarity)
+			Collection.add_item(endItem)
+			EventBus.inventory_updated.emit()
 			
+func change_wheel_rarity(new_rarity):
+	current_wheelspin_rarity = new_rarity
+	set_wheelspin_color()
+
 
 func roll_prize(prize, rarity):
 	WinSound.play()
-	var prize_list = prizes.get(prize)
+	var prize_list = endItem.prizes.get(prize)
 	if prize_list:
-		final_prize = prize_list.pick_random()
+		var final_variant = prize_list.pick_random()
+		
+		final_prize = final_variant
+		endItem.final_prize = final_variant
+		
+		if ItemPart.Types.has(prize):
+			endItem.type = ItemPart.Types[prize]
+			
+		endItem.picture = prizes_icons[prize]
+			
 		give_rarity(final_prize, rarity)
+		reset_weight()
+		set_wheelspin_color()
 		
-		
-func give_rarity(prize, finalrarity):
-	if finalrarity != "":
-		print(finalrarity + " " + prize)
-		return finalrarity
+func give_rarity(prize, final_prize):
+	if final_prize != "":
+		print(final_prize + " " + prize)
+		FinalPrize.text = "Prize: \n" + final_prize + " \n" + prize
+		endItem.set_rarity(final_prize)
+		return final_prize
 	
-	var first_rolled_rarity : float
-	var total_weight : int = 0
-	for rarity in rarities:
-		total_weight += rarity["weight"]
-		
-	var roll = randf_range(0, total_weight)
-	for rarity in rarities: #Hier wird die Rarity gerollt
-		first_rolled_rarity += rarity["weight"]
-		if roll < first_rolled_rarity:
-			return rarity["name"]
+	endItem.randomize_rarity()
+	
+	final_prize = endItem.rarity_string
+	return final_prize
 			
 	print("fallback")
 	
 func setup_prizes(child):
-	child.prize_type = prizes.keys().pick_random()
+	child.prize_type = endItem.prizes.keys().pick_random()
+
+
+func set_wheelspin_color():
+	if COLOR_TINT.has(current_wheelspin_rarity):
+		self.self_modulate = COLOR_TINT[current_wheelspin_rarity]
+	
+	reset_weight()
+	
+	match current_wheelspin_rarity:
+		"Common": current_weights["Common"] = 50.0
+		"Rare": current_weights["Rare"] = 50.0
+		"Epic": current_weights["Epic"] = 50.0
+		"Mythic": current_weights["Mythic"] = 50.0
+		"Legendary": current_weights["Legendary"] = 50.0
+		
+func reset_weight():
+	current_weights["Common"] = 50.0
+	current_weights["Rare"] = 25.0
+	current_weights["Epic"] = 15.0
+	current_weights["Mythic"] = 7.5
+	current_weights["Legendary"] = 2.5
+
+func _on_common_toggled(toggled_on: bool) -> void:
+	if toggled_on == true:
+		price = 50.0
+		current_wheelspin_rarity = "Common"
+		change_wheel_rarity("Common")
+		
+func _on_rare_toggled(toggled_on: bool) -> void:
+	if toggled_on == true:
+		price = 100.0
+		current_wheelspin_rarity = "Rare"
+		change_wheel_rarity("Rare")
+		
+func _on_epic_toggled(toggled_on: bool) -> void:
+	if toggled_on == true:
+		price = 250.0
+		current_wheelspin_rarity = "Epic"
+		change_wheel_rarity("Epic")
+
+func _on_mythic_toggled(toggled_on: bool) -> void:
+	if toggled_on == true:
+		price = 500.0
+		current_wheelspin_rarity = "Mythic"
+		change_wheel_rarity("Mythic")
+
+func _on_legendary_toggled(toggled_on: bool) -> void:
+	if toggled_on == true:
+		price = 1500.0
+		current_wheelspin_rarity = "Legendary"
+		change_wheel_rarity("Legendary")
+		

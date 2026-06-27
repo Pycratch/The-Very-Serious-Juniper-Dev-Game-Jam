@@ -1,9 +1,22 @@
 [gd_scene format=3 uid="uid://cark8jecq6hob"]
 
 [ext_resource type="Script" uid="uid://cxtftmjlnxif2" path="res://Systems/Collection-system/scripts/inventory.gd" id="1_bsb4b"]
-[ext_resource type="Script" uid="uid://sg7t00nf3ws6" path="res://Systems/Collection-system/item_script.gd" id="2_o7ns8"]
-[ext_resource type="Resource" uid="uid://rxx7gamgwgsi" path="res://Systems/Collection-system/tests/test1.tres" id="3_0h3vl"]
+[ext_resource type="Script" uid="uid://sg7t00nf3ws6" path="res://Systems/Collection-system/scripts/item_script.gd" id="2_o7ns8"]
+[ext_resource type="Resource" uid="uid://cuc3iuiv0dwbe" path="res://Systems/Collection-system/PremadeItems/BaseEngine.tres" id="3_o7ns8"]
+[ext_resource type="Resource" uid="uid://cl27ycdentvwk" path="res://Systems/Collection-system/PremadeItems/BaseTires.tres" id="4_0h3vl"]
+[ext_resource type="Resource" uid="uid://bu581cdqs3xfg" path="res://Systems/Collection-system/PremadeItems/BaseExhaust.tres" id="5_flurp"]
+[ext_resource type="Resource" uid="uid://ci5v57qx6saw4" path="res://Systems/Collection-system/PremadeItems/BaseAerodynamics.tres" id="6_852ed"]
+[ext_resource type="Resource" uid="uid://og7jtbbl88ju" path="res://Systems/Collection-system/PremadeItems/BaseSupercharger.tres" id="7_ufagx"]
+[ext_resource type="Resource" uid="uid://ujyiabxh4ckp" path="res://Systems/Collection-system/PremadeItems/BaseTransmission.tres" id="8_evkna"]
+[ext_resource type="Resource" uid="uid://csntv5yc4bfuy" path="res://Systems/Collection-system/PremadeItems/BaseSuspension.tres" id="9_pc5y6"]
+[ext_resource type="Resource" uid="uid://bajweh1c6bnqs" path="res://Systems/Collection-system/PremadeItems/BaseBrakes.tres" id="10_pc5y6"]
+[ext_resource type="Resource" uid="uid://c4emym4vxhdm6" path="res://Systems/Collection-system/PremadeItems/BaseTurbocharger.tres" id="11_2wjen"]
+[ext_resource type="Resource" uid="uid://cm5yhnux3bs82" path="res://Systems/Collection-system/PremadeItems/BaseFuelsystem.tres" id="12_qm1cf"]
+[ext_resource type="Resource" uid="uid://b73rw8whftodu" path="res://Systems/Collection-system/PremadeItems/BaseDifferential.tres" id="13_qm1cf"]
+[ext_resource type="Resource" uid="uid://ceq1ekyl05tr4" path="res://Systems/Collection-system/PremadeItems/BaseDriveTrain.tres" id="14_ao7pr"]
+[ext_resource type="Resource" uid="uid://bdfseepcpqju0" path="res://Systems/Collection-system/PremadeItems/BaseWeightReduction.tres" id="15_7k2wd"]
+[ext_resource type="Resource" uid="uid://b5su1rddcuwn4" path="res://Systems/Collection-system/PremadeItems/BaseCoolingSystem.tres" id="16_do12a"]
 
 [node name="Inventory" type="Node" unique_id=1645023232]
 script = ExtResource("1_bsb4b")
-Items = Array[ExtResource("2_o7ns8")]([ExtResource("3_0h3vl"), ExtResource("3_0h3vl"), ExtResource("3_0h3vl"), ExtResource("3_0h3vl"), ExtResource("3_0h3vl"), ExtResource("3_0h3vl")])
+Items = Array[ExtResource("2_o7ns8")]([ExtResource("3_o7ns8"), ExtResource("4_0h3vl"), ExtResource("5_flurp"), ExtResource("6_852ed"), ExtResource("7_ufagx"), ExtResource("8_evkna"), ExtResource("9_pc5y6"), ExtResource("10_pc5y6"), ExtResource("11_2wjen"), ExtResource("12_qm1cf"), ExtResource("13_qm1cf"), ExtResource("14_ao7pr"), ExtResource("15_7k2wd"), ExtResource("16_do12a")])

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c7h7fdumm8wbo"]
+
+[ext_resource type="Script" uid="uid://c63csq1dfjse6" path="res://Systems/Collection-system/scripts/collection_ui.gd" id="1_068sl"]
+
+[node name="SellContainer" type="Control" unique_id=955670684]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_068sl")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=911859175]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5

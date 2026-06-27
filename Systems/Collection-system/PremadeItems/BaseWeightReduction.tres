@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemPart" format=3 uid="uid://bdfseepcpqju0"]
+
+[ext_resource type="Texture2D" uid="uid://bk2w4ydiga47n" path="res://assets/Prizes/Icons/WeightReductionIcon.png" id="1_i0f6y"]
+[ext_resource type="Script" uid="uid://sg7t00nf3ws6" path="res://Systems/Collection-system/scripts/item_script.gd" id="2_rvfqo"]
+
+[resource]
+script = ExtResource("2_rvfqo")
+Name = "Common Weight Reduction"
+type = 12
+power = 25.0
+picture = ExtResource("1_i0f6y")
+metadata/_custom_type_script = "uid://sg7t00nf3ws6"
