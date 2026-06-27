@@ -566,16 +566,13 @@ region_rect = Rect2(0, 54, 128, 26)
 [node name="CountdownTimer" type="Timer" parent="." unique_id=1204987253]
 wait_time = 3.0
 one_shot = true
-autostart = true
 
 [node name="CountdownStart" type="Timer" parent="." unique_id=763835154]
-autostart = true
 
 [node name="StartSound" type="AudioStreamPlayer" parent="." unique_id=1787397473]
 stream = ExtResource("7_cxp7j")
 
 [node name="SecondSound" type="AudioStreamPlayer" parent="." unique_id=1425384291]
-stream = ExtResource("7_cxp7j")
 
 [connection signal="player_won" from="PlayerRacingLine/Car" to="." method="_on_car_player_won"]
 [connection signal="enemy_won" from="EnemyRacingLine/Car" to="." method="_on_car_enemy_won"]

@@ -1,11 +1,6 @@
-extends Node2D
+extends Control
 
-@export var Money : float = 5000.0
-@export var Items : int
-@export var Power : float
-
-var can_sell :bool = false
-
+@export var GameUI : Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -14,3 +9,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+func toggle_visibility(ui):
+	ui.visible = !ui.visible
+	self.visible = !self.visible
+
+
+func _on_leave_pressed() -> void:
+	toggle_visibility(GameUI)

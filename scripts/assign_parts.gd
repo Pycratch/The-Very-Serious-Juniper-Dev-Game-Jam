@@ -5,7 +5,10 @@ extends Control
 @export var added_power : float
 var assigned_parts : Array = []
 var current_owned_parts : Array[ItemPart] = []
-var equipped_parts : Dictionary = {}
+@export var equipped_parts : Dictionary = {}
+
+func _process(delta: float) -> void:
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -43,7 +46,6 @@ func power_calculation():
 	
 	GameStats.Power = added_power
 	$MarginContainer/POWER.text = "Power: " + str(added_power)
-
 
 func _on_category_button_item_selected(index: int) -> void:
 	var selected_category = CategoryButton.get_item_text(index)

@@ -30,14 +30,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	drive()
-	if progress_ratio > 0.95:
+	if progress_ratio > 0.95 and progress_ratio < 1.0:
 		set_winning()
 
 func set_speed():
-	if type == Types.PLAYER:
-		speed = GameStats.Power
-	elif type == Types.ENEMY:
-		speed = GameStats.Power * randf_range(1, 1.3)
+	if type == Types.PLAYER and GameStats.Power >= 500:
+		speed = GameStats.Power * 0.01
+	elif type == Types.ENEMY and GameStats.Power >= 500:
+		speed = GameStats.Power * randf_range(1.0, 1.2) * 0.1
 
 func set_texture_region():
 	texture.region_enabled = true
@@ -56,10 +56,13 @@ func drive():
 func set_winning():
 	can_start = false
 	if racing_node.there_is_winner == false:
+		print("null")
 		if type == Types.PLAYER:
+			print("play")
 			player_won.emit()
 			racing_node.there_is_winner = true
 		elif type == Types.ENEMY:
+			print("enem")
 			enemy_won.emit()
 			racing_node.there_is_winner = true
-	print(racing_node.winner)
+	progress_ratio = 0.0
