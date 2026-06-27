@@ -1,8 +1,8 @@
 extends Node2D
 
-@export var Money : float = 5000.0
+@export var Money : float = 500.0
 @export var Items : int
-@export var Power : float
+@export var Power : float = 350.0
 
 var can_sell :bool = false
 

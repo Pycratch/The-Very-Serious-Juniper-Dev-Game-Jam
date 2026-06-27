@@ -4,7 +4,7 @@ extends Node2D
 var winner :String#using string coz tired
 var there_is_winner :bool = false
 var start : bool = false
-var prize_money = 2000
+var prize_money = 250
 var can_start : bool = false
 var play_sound : bool = false
 var can_race : bool = true

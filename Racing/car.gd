@@ -34,10 +34,30 @@ func _process(delta):
 		set_winning()
 
 func set_speed():
+	if type == Types.PLAYER and GameStats.Power < 500:
+		speed = GameStats.Power * 0.1
+	elif type == Types.ENEMY and GameStats.Power < 500:
+		speed = GameStats.Power * randf_range(0.7, 1.2) * 0.1
+		
 	if type == Types.PLAYER and GameStats.Power >= 500:
-		speed = GameStats.Power * 0.01
+		speed = GameStats.Power * 0.05
 	elif type == Types.ENEMY and GameStats.Power >= 500:
-		speed = GameStats.Power * randf_range(1.0, 1.2) * 0.1
+		speed = GameStats.Power * randf_range(0.9, 1.2) * 0.05
+		
+	if type == Types.PLAYER and GameStats.Power >= 1000:
+		speed = GameStats.Power * 0.008
+	elif type == Types.ENEMY and GameStats.Power >= 1000:
+		speed = GameStats.Power * randf_range(1.0, 1.2) * 0.008
+		
+	if type == Types.PLAYER and GameStats.Power >= 1500:
+		speed = GameStats.Power * 0.007
+	elif type == Types.ENEMY and GameStats.Power >= 1500:
+		speed = GameStats.Power * randf_range(1.0, 1.2) * 0.007
+		
+	if type == Types.PLAYER and GameStats.Power >= 2000:
+		speed = GameStats.Power * 0.005
+	elif type == Types.ENEMY and GameStats.Power >= 2000:
+		speed = GameStats.Power * randf_range(1.0, 1.3) * 0.005
 
 func set_texture_region():
 	texture.region_enabled = true
