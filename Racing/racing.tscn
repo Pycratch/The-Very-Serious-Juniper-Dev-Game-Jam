@@ -3,7 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://cx3fcq6yqr1vw" path="res://assets/Yaya_assets/cars-tracks.png" id="1_7rcc2"]
 [ext_resource type="Texture2D" uid="uid://b0d3tu03etob0" path="res://assets/Yaya_assets/background.png" id="1_cb3yj"]
 [ext_resource type="Texture2D" uid="uid://ppjijqfcsyo5" path="res://assets/Yaya_assets/Stands.png" id="1_wwogq"]
+[ext_resource type="Script" uid="uid://0mi1l663a4yo" path="res://Racing/racing.gd" id="1_wym8m"]
 [ext_resource type="PackedScene" uid="uid://boamnbvsnftre" path="res://Racing/car.tscn" id="4_lyb4g"]
+[ext_resource type="Texture2D" uid="uid://f6bbk7qvvjhg" path="res://assets/Yaya_assets/text.png" id="6_runar"]
+[ext_resource type="AudioStream" uid="uid://byis3kmahh2h7" path="res://assets/Yaya_assets/start_sound.wav" id="7_cxp7j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lyb4g"]
 texture = ExtResource("1_cb3yj")
@@ -103,7 +106,9 @@ _data = {
 }
 point_count = 5
 
-[node name="Racing" type="Node2D" unique_id=2028540428]
+[node name="Racing" type="Node2D" unique_id=2028540428 node_paths=PackedStringArray("cars")]
+script = ExtResource("1_wym8m")
+cars = [NodePath("PlayerRacingLine/Car"), NodePath("EnemyRacingLine/Car")]
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=447539598]
 scale = Vector2(3, 3)
@@ -541,3 +546,38 @@ position = Vector2(137, 138)
 rotation = 0.0047280975
 racing_line = NodePath("..")
 type = 1
+
+[node name="WinSprite" type="Sprite2D" parent="." unique_id=98315646]
+visible = false
+position = Vector2(618, 322.00003)
+scale = Vector2(7, 7)
+texture = ExtResource("6_runar")
+region_enabled = true
+region_rect = Rect2(5, 0, 123, 34)
+
+[node name="LoseSprite" type="Sprite2D" parent="." unique_id=724232779]
+visible = false
+position = Vector2(606, 350)
+scale = Vector2(7, 7)
+texture = ExtResource("6_runar")
+region_enabled = true
+region_rect = Rect2(0, 54, 128, 26)
+
+[node name="CountdownTimer" type="Timer" parent="." unique_id=1204987253]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="CountdownStart" type="Timer" parent="." unique_id=763835154]
+autostart = true
+
+[node name="StartSound" type="AudioStreamPlayer" parent="." unique_id=1787397473]
+stream = ExtResource("7_cxp7j")
+
+[node name="SecondSound" type="AudioStreamPlayer" parent="." unique_id=1425384291]
+stream = ExtResource("7_cxp7j")
+
+[connection signal="player_won" from="PlayerRacingLine/Car" to="." method="_on_car_player_won"]
+[connection signal="enemy_won" from="EnemyRacingLine/Car" to="." method="_on_car_enemy_won"]
+[connection signal="timeout" from="CountdownTimer" to="." method="_on_countdown_timer_timeout"]
+[connection signal="timeout" from="CountdownStart" to="." method="_on_countdown_start_timeout"]
